@@ -195,9 +195,20 @@ class VaccincenterLazyImageLoader {
       img.style.opacity = '1';
     }
 
+    // Enable lightbox functionality if image has lightbox attributes
+    if (img.dataset.lightbox !== undefined || img.classList.contains('lightbox-trigger')) {
+      img.style.cursor = 'zoom-in';
+      img.setAttribute('data-lightbox', 'vaccincenter-gallery');
+
+      // Notify lightbox about new image if available
+      if (window.VaccincenterLightbox && typeof window.VaccincenterLightbox.addImages === 'function') {
+        window.VaccincenterLightbox.addImages([img]);
+      }
+    }
+
     // Dispatch custom event
     const event = new CustomEvent('vaccincenter:imageLoaded', {
-      detail: { image: img, src: img.src }
+      detail: { image: img, src: img.src, hasLightbox: img.dataset.lightbox !== undefined }
     });
     document.dispatchEvent(event);
 

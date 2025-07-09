@@ -79,7 +79,7 @@ export class Lightbox {
     // Lightbox close events
     if (this.lightboxElement) {
       eventManager.on(this.lightboxElement, 'click', this.handleBackgroundClick.bind(this));
-      
+
       const closeButton = this.lightboxElement.querySelector('.lightbox-close');
       if (closeButton) {
         eventManager.on(closeButton, 'click', this.close.bind(this));
@@ -109,13 +109,26 @@ export class Lightbox {
     event.preventDefault();
 
     const img = event.currentTarget;
-    const src = img.src || img.dataset.src;
+
+    // Handle lazy loaded images - prefer loaded src, fallback to data-src
+    let src = img.src;
+    if (!src || src.includes('data:image/svg+xml')) {
+      // If src is placeholder, use data-src
+      src = img.dataset.src || img.src;
+    }
+
     const alt = img.alt || img.dataset.alt || '';
     const title = img.title || img.dataset.title || '';
 
     if (!src) {
       console.warn('Lightbox: No image source found');
       return;
+    }
+
+    // Force load the image if it's not already loaded (lazy loading scenario)
+    if (img.dataset.src && !img.dataset.loaded) {
+      img.src = img.dataset.src;
+      img.dataset.loaded = 'true';
     }
 
     this.open(src, alt, title);

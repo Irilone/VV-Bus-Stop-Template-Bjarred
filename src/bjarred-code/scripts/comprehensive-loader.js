@@ -58,6 +58,7 @@
     // Component modules - load after core
     components: [
       { url: buildEpiServerURL('scripts/atomic-components/js-modules/components/faq-toggle.js', 'componentJs'), name: 'FAQ Toggle Component' },
+      { url: buildEpiServerURL('scripts/atomic-components/js-modules/components/lightbox.js', 'componentJs'), name: 'Lightbox Component' },
       { url: buildEpiServerURL('scripts/atomic-components/js-modules/components/lazy-image-loader.js', 'componentJs'), name: 'Lazy Image Loader' }
     ]
   };
@@ -278,6 +279,18 @@
         if (window.VBEventManager && typeof window.VBEventManager.initialize === 'function') {
           window.VBEventManager.initialize();
           console.log('✅ Event Manager initialized');
+        }
+
+        // Trigger lightbox initialization if available
+        if (window.Lightbox) {
+          // Initialize lightbox for images with data-lightbox attribute or lazy images
+          window.VaccincenterLightbox = new window.Lightbox('img[data-lightbox], img.lazy', {
+            lightboxId: 'vaccine-lightbox',
+            closeOnEscape: true,
+            closeOnBackground: true,
+            trapFocus: true
+          });
+          console.log('✅ Lightbox component initialized');
         }
 
         // Trigger lazy image loader initialization if available

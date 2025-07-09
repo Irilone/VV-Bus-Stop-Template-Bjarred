@@ -167,20 +167,60 @@ document.addEventListener('vaccincenter:imageError', (e) => {
 });
 ```
 
-## ✅ **Your Answer: Use This Format**
+## 🔥 **LIGHTBOX + LAZY LOADING = PERFECT COMBO!**
 
-For your specific case, use:
-
+### 🖼️ **For Lightbox Images (Bus photos, clinic images):**
 ```html
 <img class="bus-img img-blue-glow img-fluid lazy"
      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%231e3a8a'/%3E%3C/svg%3E"
+     data-src="https://www.ptj.se/49f8f5/globalassets/vaccincenter-varvet/images/bus-malmo.jpg"
+     data-lightbox="vaccincenter-gallery"
+     loading="lazy"
+     alt="Vaccincenter mobile health bus in Malmö">
+```
+
+### 📷 **For Regular Images (No lightbox):**
+```html
+<img class="img-fluid lazy"
+     src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0'/%3E%3C/svg%3E"
      data-src="actual-image.jpg"
      loading="lazy"
      alt="Description">
+```
+
+## 🎯 **How They Work Together:**
+
+1. **Lazy Loading** loads images only when needed
+2. **Lightbox** makes images clickable for full-size viewing
+3. **Smart Integration** - lightbox automatically detects lazy-loaded images
+4. **Seamless UX** - clicking shows full resolution instantly
+
+## ✅ **Your Answer: Use This Format**
+
+For your **1.webp** and **2.webp** with lightbox capability:
+
+```html
+<!-- 1.webp with lightbox -->
+<img class="bus-img img-blue-glow img-fluid lazy"
+     src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%231e3a8a'/%3E%3C/svg%3E"
+     data-src="https://www.ptj.se/49f8f5/globalassets/vaccincenter-varvet/images/1.webp"
+     data-lightbox="bus-gallery"
+     loading="lazy"
+     alt="Vaccincenter bus image 1">
+
+<!-- 2.webp with lightbox -->
+<img class="bus-img img-blue-glow img-fluid lazy"
+     src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%231e3a8a'/%3E%3C/svg%3E"
+     data-src="https://www.ptj.se/49f8f5/globalassets/vaccincenter-varvet/images/2.webp"
+     data-lightbox="bus-gallery"
+     loading="lazy"
+     alt="Vaccincenter bus image 2">
 ```
 
 This combines:
 - ✅ **Native `loading="lazy"`** for modern browsers
 - ✅ **Class `lazy`** for enhanced JavaScript features
 - ✅ **Data-src pattern** for controlled loading
+- ✅ **Data-lightbox** for click-to-enlarge functionality
 - ✅ **Inline SVG placeholder** to prevent layout shift
+- ✅ **Smart lightbox integration** with lazy loading
