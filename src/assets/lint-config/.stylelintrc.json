@@ -1,0 +1,57 @@
+{
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "color-no-invalid-hex": true,
+    "declaration-block-no-duplicate-properties": [
+      true,
+      {
+        "ignore": [
+          "consecutive-duplicates-with-different-values"
+        ]
+      }
+    ],
+    "order/order": [
+      "custom-properties",
+      "dollar-variables",
+      "declarations",
+      {
+        "type": "at-rule",
+        "name": "supports"
+      },
+      {
+        "type": "at-rule",
+        "name": "media"
+      },
+      "rules"
+    ],
+    "selector-class-pattern": [
+      "^[a-z0-9\\-]+$",
+      {
+        "message": "Selector should be lowercase, hyphen-separated (BEM not enforced)"
+      }
+    ],
+    "block-no-empty": true,
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null
+  },
+  "overrides": [
+    {
+      "files": ["**/*.css"],
+      "customSyntax": "postcss-css"
+    },
+    {
+      "files": ["**/*.scss"],
+      "extends": ["stylelint-config-standard-scss"],
+      "customSyntax": "postcss-scss"
+    }
+  ],
+  "ignoreFiles": [
+    "dist/**",
+    "**/*.min.css"
+  ]
+}

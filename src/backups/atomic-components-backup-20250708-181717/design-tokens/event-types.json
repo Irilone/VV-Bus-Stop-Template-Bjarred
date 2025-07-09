@@ -1,0 +1,55 @@
+{
+  "eventTypes": {
+    "user": {
+      "click": "click",
+      "hover": "mouseenter",
+      "focus": "focus",
+      "blur": "blur",
+      "input": "input",
+      "change": "change",
+      "keydown": "keydown",
+      "keyup": "keyup",
+      "scroll": "scroll",
+      "resize": "resize"
+    },
+    "custom": {
+      "lightboxOpen": "vaccine:lightbox:open",
+      "lightboxClose": "vaccine:lightbox:close",
+      "accordionToggle": "vaccine:accordion:toggle",
+      "priceToggle": "vaccine:price:toggle",
+      "navigationToggle": "vaccine:nav:toggle",
+      "tableSort": "vaccine:table:sort",
+      "dateFormat": "vaccine:date:format"
+    },
+    "lifecycle": {
+      "componentInit": "vaccine:component:init",
+      "componentReady": "vaccine:component:ready",
+      "componentDestroy": "vaccine:component:destroy",
+      "appReady": "vaccine:app:ready"
+    },
+    "performance": {
+      "debounced": "vaccine:perf:debounced",
+      "throttled": "vaccine:perf:throttled",
+      "lazy": "vaccine:perf:lazy"
+    }
+  },
+  "eventConfig": {
+    "debounce": {
+      "scroll": 100,
+      "resize": 250,
+      "input": 300,
+      "search": 500
+    },
+    "throttle": {
+      "mousemove": 16,
+      "scroll": 16,
+      "resize": 16
+    },
+    "passive": {
+      "scroll": true,
+      "wheel": true,
+      "touchstart": true,
+      "touchmove": true
+    }
+  }
+}

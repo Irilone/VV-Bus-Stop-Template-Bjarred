@@ -1,0 +1,1484 @@
+/* ==========================================================================
+   MEDIA QUERIES EXTRACTED FROM style.css
+   All responsive breakpoints and media-specific styles
+========================================================================== */
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --clr-primary: #4AA6C9;
+        --clr-primary-dark: #5BB5D8;
+        --clr-heading: #E0F3FA;
+        --clr-body: #CDDBE6;
+        --clr-accent: #6BC4E7;
+        --clr-brand-500: #5BB5D8;
+        --clr-bg: #0B1929;
+        --clr-bg-alt: #142438;
+        --clr-bg-card: #1A2F47;
+        --clr-border: #2A3F5C;
+        --clr-white: #0B1929;
+        --clr-black: #E0F3FA;
+    }
+
+    .gdpr-banner {
+        background: #1a2233;
+        color: #fff;
+    }
+    .gdpr-banner #gdpr-accept {
+        background: #fff;
+        color: #012363;
+    }
+    .gdpr-banner #gdpr-accept:hover {
+        background: #e0e0e0;
+        color: #012363;
+    }
+    .gdpr-banner #gdpr-info {
+        background: transparent;
+        color: #fff;
+        border: 1.5px solid #fff;
+    }
+    .gdpr-banner #gdpr-info:hover {
+        background: #fff;
+        color: #012363;
+    }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    html body *,
+    .faq-item,
+    .faq-icon::before,
+    .faq-icon::after,
+    .fade-in {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .vaccine-item,
+    .vaccine-toggle,
+    .vaccine-content {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .vaccine-item {
+        border-width: 2px !important;
+    }
+
+    .vaccine-toggle {
+        border: 2px solid currentColor !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .faq-icon {
+        display: none !important;
+    }
+
+    .location-schedule tr[data-upcoming]::before {
+        display: none !important;
+    }
+
+    .mobile-nav-toggle,
+    .mobile-menu,
+    .mobile-menu-overlay {
+        display: none !important;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+    a,
+    button,
+    input,
+    select,
+    textarea {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+
+    .clickable-card {
+        cursor: pointer !important;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .clickable-card:active {
+        transform: scale(0.98) !important;
+    }
+
+    /* Increase all interactive element sizes */
+    button,
+    a.btn,
+    input[type="submit"],
+    input[type="button"],
+    .touch-target {
+        min-height: 44px !important;
+        padding: 0.75rem 1rem !important;
+    }
+
+    /* Remove hover effects on touch devices */
+    :hover {
+        transition: none !important;
+    }
+}
+
+/* ==========================================================================
+   DESKTOP BREAKPOINTS (Mobile-First Approach)
+========================================================================== */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .container {
+        padding-inline: clamp(1rem, 4vw, 2rem);
+        width: 100%;
+        max-width: 1320px;
+        margin-inline: auto;
+    }
+
+    /* Two column layout starts */
+    .row>.col-sm-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+}
+
+/* Small to Medium range */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .location-info {
+        text-align: center !important;
+        padding: 0 var(--CLAMP-27) !important;
+    }
+
+    .faq-question {
+        padding: var(--CLAMP-16) !important;
+    }
+
+    .faq-content {
+        padding: 0 var(--CLAMP-16) var(--CLAMP-16) !important;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container {
+        width: 100%;
+        max-width: 1320px;
+        margin-inline: auto;
+        padding-inline: clamp(1rem, 4vw, 2rem);
+    }
+
+    /* Show navigation, hide mobile menu */
+    .mobile-nav-toggle {
+        display: none !important;
+    }
+
+    /* Restore desktop navigation */
+    nav.main-navigation {
+        display: block !important;
+        position: static !important;
+    }
+
+    /* Three column layout available */
+    .row>.col-md-4 {
+        flex: 0 0 33.333333% !important;
+        max-width: 33.333333% !important;
+    }
+
+    .row>.col-md-8 {
+        flex: 0 0 66.666667% !important;
+        max-width: 66.666667% !important;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 1320px;
+        width: 100%;
+        margin-inline: auto;
+        padding-inline: clamp(1rem, 4vw, 2rem);
+    }
+
+    .location-section {
+        display: grid !important;
+        grid-template-columns: 1fr 2fr !important;
+        gap: var(--space-xl) !important;
+        align-items: start !important;
+    }
+
+    .location-info {
+        text-align: left !important;
+    }
+
+    .faq-item {
+        transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out) !important;
+    }
+
+    .faq-item:hover {
+        transform: translateY(calc(var(--PXR-2) * -1)) !important;
+        box-shadow: 0 var(--PXR-4) var(--PXR-12) rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .page__content-body {
+        padding-right: var(--CLAMP-110) !important;
+        padding-right: clamp(4rem, 3rem + 2.5vw, 6.25rem) !important;
+    }
+
+    nav.footer__link-nav ul#footer__links.open,
+    nav.footer__link-nav ul#footer__links:target {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+    }
+
+    nav.footer__link-nav ul#footer__links.open>li.col,
+    nav.footer__link-nav ul#footer__links:target>li.col {
+        width: auto !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Full desktop layout */
+    .row>.col-lg-3 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+
+    /* Remove mobile-specific styling */
+    .mobile-only {
+        display: none !important;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px !important;
+    }
+
+    /* Optimal reading width for content */
+    .content-wrapper {
+        max-width: 800px !important;
+        margin-inline: auto !important;
+    }
+}
+
+/* XXL devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px !important;
+    }
+}
+
+/* ==========================================================================
+   MOBILE BREAKPOINTS (Desktop-First Approach)
+========================================================================== */
+
+/* Medium devices and below */
+@media (max-width: 991.98px) {
+    .desktop-nav {
+        display: none !important;
+    }
+
+    .mobile-nav-toggle {
+        display: flex !important;
+    }
+
+    .navbar-collapse {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background: var(--clr-bg) !important;
+        transition: right 0.3s ease !important;
+        padding: 5rem 1rem 2rem !important;
+        overflow-y: auto !important;
+    }
+
+    .navbar-collapse.show {
+        right: 0 !important;
+    }
+}
+
+/* Small devices and below (tablets and phones) */
+@media (max-width: 767.98px) {
+    /* Show mobile toggle */
+    .mobile-nav-toggle {
+        display: block !important;
+    }
+
+    /* Hide desktop navigation */
+    nav.main-navigation,
+    .desktop-navigation {
+        display: none !important;
+    }
+
+    /* Stack all columns */
+    .row>[class*="col-"] {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: var(--space-md) !important;
+    }
+
+    /* Mobile-specific utilities */
+    .text-center-mobile {
+        text-align: center !important;
+    }
+
+    .order-first-mobile {
+        order: -1 !important;
+    }
+
+    /* Price table responsiveness */
+    .price-table-wrapper {
+        position: relative !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .price-table {
+        min-width: 500px !important;
+    }
+
+    /* Scroll indicator */
+    .price-table-wrapper::after {
+        content: 'Swipa →' !important;
+        position: absolute !important;
+        right: 10px !important;
+        top: 10px !important;
+        background: var(--clr-primary) !important;
+        color: white !important;
+        padding: 0.25rem 0.5rem !important;
+        border-radius: var(--radius-sm) !important;
+        font-size: var(--fluid-xs) !important;
+    }
+
+    /* Larger touch targets on mobile */
+    summary.vaccine-summary {
+        padding: var(--space-lg) var(--space-md) !important;
+        min-height: 60px !important;
+    }
+
+    /* Stack vaccine info vertically */
+    .vaccine-summary {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: var(--space-xs) !important;
+    }
+
+    .vaccine-summary::after {
+        position: absolute !important;
+        right: var(--space-md) !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+    }
+
+    details[open] .vaccine-summary::after {
+        transform: translateY(-50%) rotate(180deg) !important;
+    }
+
+    /* Visual hierarchy for vaccine badges */
+    .vaccine-badge {
+        background: var(--clr-primary) !important;
+        color: white !important;
+        padding: 0.25rem 0.5rem !important;
+        border-radius: var(--radius-sm) !important;
+        font-size: var(--fluid-xs) !important;
+        font-weight: 500 !important;
+    }
+
+    /* Prioritized vaccine highlight */
+    .vaccine-priority {
+        border-color: var(--clr-primary) !important;
+        border-width: 2px !important;
+    }
+
+    /* FAQ items use same progressive disclosure */
+    details.faq-item {
+        border: 1px solid var(--clr-border) !important;
+        border-radius: var(--radius-md) !important;
+        margin-bottom: var(--space-sm) !important;
+        background: var(--clr-bg) !important;
+    }
+
+    summary.faq-summary {
+        padding: var(--space-md) !important;
+        cursor: pointer !important;
+        list-style: none !important;
+        font-size: var(--fluid-base) !important;
+        min-height: 44px !important;
+    }
+
+    .faq-content {
+        padding: 0 var(--space-md) var(--space-md) !important;
+    }
+
+    .vaccine-item {
+        margin-bottom: var(--space-md) !important;
+    }
+
+    .vaccine-summary {
+        padding: var(--space-md) !important;
+        padding-right: calc(var(--space-md) + 40px) !important;
+    }
+
+    .vaccine-title {
+        font-size: var(--fluid-base) !important;
+        line-height: 1.3 !important;
+    }
+
+    .vaccine-preview {
+        font-size: var(--fluid-sm) !important;
+        -webkit-line-clamp: 1 !important;
+        line-clamp: 1 !important;
+    }
+
+    .vaccine-toggle {
+        top: var(--space-sm) !important;
+        right: var(--space-sm) !important;
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 12px !important;
+    }
+
+    .vaccine-content {
+        padding: var(--space-md) !important;
+    }
+
+    .vaccine-badge {
+        font-size: 0.7rem !important;
+        padding: 0.2rem 0.5rem !important;
+        margin-top: var(--space-xs) !important;
+        margin-left: 0 !important;
+        align-self: flex-start !important;
+    }
+}
+
+/* Tablet and below */
+@media (max-width: 768px) {
+    html,
+    body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+    /* Container adjustments */
+    .container,
+    .container-fluid {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        max-width: 100% !important;
+    }
+
+    /* Row/column fixes */
+    .row {
+        margin-left: -0.5rem !important;
+        margin-right: -0.5rem !important;
+    }
+
+    [class*="col-"] {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* Stack columns on mobile */
+    .col-md-8,
+    .col-md-4 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    /* Typography scaling */
+    h1 {
+        font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 4.5vw, 2rem) !important;
+    }
+
+    h3 {
+        font-size: clamp(1.25rem, 4vw, 1.75rem) !important;
+    }
+
+    h4 {
+        font-size: clamp(1.125rem, 3.5vw, 1.5rem) !important;
+    }
+
+    h5 {
+        font-size: clamp(1rem, 3vw, 1.25rem) !important;
+    }
+
+    h6 {
+        font-size: clamp(0.875rem, 2.5vw, 1.125rem) !important;
+    }
+
+    p,
+    li {
+        font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Images */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
+    }
+
+    /* Bus images specific */
+    .bus-img {
+        width: 100% !important;
+        max-height: 200px !important;
+        object-fit: cover !important;
+    }
+
+    /* Gallery adjustments */
+    .bus-gallery-col {
+        margin-bottom: 2rem !important;
+    }
+
+    /* Hero/banner images */
+    .hero-image,
+    .banner-image {
+        height: 200px !important;
+        object-fit: cover !important;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    /* Navigation */
+    .navbar-nav,
+    .header__nav {
+        display: none !important;
+    }
+
+    /* Create hamburger button */
+    .mobile-menu-btn {
+        display: block !important;
+        position: fixed !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        z-index: 9999 !important;
+        width: 48px !important;
+        height: 48px !important;
+        background: var(--clr-primary, #012363) !important;
+        border: none !important;
+        border-radius: var(--radius-sm, 4px) !important;
+        cursor: pointer !important;
+        padding: 0 !important;
+    }
+
+    /* Hamburger icon */
+    .mobile-menu-btn::before {
+        content: "☰" !important;
+        font-size: 24px !important;
+        color: white !important;
+        display: block !important;
+        line-height: 48px !important;
+    }
+
+    /* Active state - X icon */
+    body.menu-open .mobile-menu-btn::before {
+        content: "✕" !important;
+    }
+
+    /* Mobile menu panel */
+    .mobile-nav {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: 80% !important;
+        max-width: 300px !important;
+        height: 100vh !important;
+        background: white !important;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2) !important;
+        transition: right 0.3s ease !important;
+        z-index: 9998 !important;
+        overflow-y: auto !important;
+        padding: 4rem 1rem 2rem !important;
+    }
+
+    body.menu-open .mobile-nav {
+        right: 0 !important;
+    }
+
+    /* Menu overlay */
+    .menu-overlay {
+        display: none !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        z-index: 9997 !important;
+    }
+
+    body.menu-open .menu-overlay {
+        display: block !important;
+    }
+
+    /* Table responsiveness */
+    .table-responsive-wrapper {
+        position: relative !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        margin: 0 -1rem !important;
+        padding: 0 1rem !important;
+    }
+
+    /* Table styling */
+    table {
+        min-width: 500px !important;
+        font-size: var(--fluid-sm, 14px) !important;
+    }
+
+    /* Scroll indicator */
+    .table-responsive-wrapper::after {
+        content: "← Dra för att se mer →" !important;
+        position: absolute !important;
+        bottom: -20px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        font-size: 12px !important;
+        color: var(--clr-body-secondary, #666) !important;
+        white-space: nowrap !important;
+    }
+
+    /* Fade edges */
+    .table-responsive-wrapper::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 30px !important;
+        background: linear-gradient(to left, white, transparent) !important;
+        pointer-events: none !important;
+        z-index: 1 !important;
+    }
+
+    /* Touch targets */
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    .btn,
+    .clickable,
+    [role="button"] {
+        min-height: 44px !important;
+        min-width: 44px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Button spacing */
+    .btn {
+        padding: 0.75rem 1.5rem !important;
+        margin: 0.25rem !important;
+    }
+
+    /* Larger touch targets */
+    a,
+    button {
+        position: relative !important;
+    }
+
+    a::after,
+    button::after {
+        content: '' !important;
+        position: absolute !important;
+        top: -8px !important;
+        right: -8px !important;
+        bottom: -8px !important;
+        left: -8px !important;
+    }
+
+    /* Focus indicators */
+    :focus {
+        outline: 3px solid var(--clr-primary) !important;
+        outline-offset: 2px !important;
+    }
+
+    /* Remove fixed widths */
+    * {
+        max-width: 100vw !important;
+    }
+
+    /* Fix floating elements */
+    .float-left,
+    .float-right {
+        float: none !important;
+        margin: 1rem auto !important;
+        display: block !important;
+    }
+
+    /* Fix position fixed elements */
+    .fixed-top {
+        position: relative !important;
+    }
+
+    /* Word wrap for long text */
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    li,
+    td,
+    th {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+
+    /* Hide non-essential elements */
+    .desktop-only,
+    .d-none-mobile {
+        display: none !important;
+    }
+
+    /* Performance optimizations */
+    * {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.3s !important;
+    }
+
+    /* Optimize shadows for performance */
+    .card,
+    .btn {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* Simplify gradients */
+    .gradient-bg {
+        background: var(--clr-primary) !important;
+    }
+
+    /* Hamburger menu fallback */
+    body::before {
+        content: "☰" !important;
+        position: fixed !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        width: 48px !important;
+        height: 48px !important;
+        background: var(--clr-primary, #012363) !important;
+        color: white !important;
+        font-size: 24px !important;
+        line-height: 48px !important;
+        text-align: center !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        z-index: 10000 !important;
+        display: block !important;
+    }
+}
+
+/* Mobile navigation specific */
+@media (max-width: 767px) {
+    html,
+    body {
+        overflow-x: hidden !important;
+    }
+
+    .welcome-header {
+        min-width: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        box-sizing: border-box !important;
+        margin-bottom: 20px !important;
+    }
+
+    .welcome-title {
+        font-size: 1.6em !important;
+        line-height: 1.2 !important;
+    }
+
+    .welcome-subtitle {
+        font-size: 1.1em !important;
+        line-height: 1.3 !important;
+    }
+
+    footer.footer {
+        padding: 20px 15px !important;
+    }
+
+    footer.footer h4 {
+        font-size: 1.1em !important;
+    }
+
+    footer.footer p,
+    footer.footer a {
+        font-size: 0.9em !important;
+    }
+
+    nav.footer__link-nav ul#footer__links.open>li.col a.footer__link,
+    nav.footer__link-nav ul#footer__links:target>li.col a.footer__link {
+        padding: 12px 15px !important;
+        font-size: 0.95em !important;
+    }
+
+    /* Footer länkar på mobil - behåll radlayout om möjligt */
+    nav.footer__link-nav ul#footer__links {
+        flex-wrap: wrap !important;
+        gap: var(--space-sm) !important;
+        padding: 0 var(--space-sm) !important;
+    }
+
+    nav.footer__link-nav ul#footer__links>li.col {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        font-size: 0.875rem !important;
+    }
+
+    /* Off-Canvas Menu */
+    .mobile-navigation__left .mobile-navigation__item#open-offside-menu {
+        padding: 10px !important;
+    }
+
+    .hamburger-menu {
+        width: 24px !important;
+        height: 20px !important;
+    }
+
+    .hamburger-menu__line {
+        height: 3px !important;
+        margin: 4px 0 !important;
+        background-color: #ffffff !important;
+        display: block !important;
+    }
+
+    .offside-navbar--menu__item a,
+    .offside-navbar--menu__item span[role="button"] {
+        padding: 14px 18px !important;
+        font-size: 1rem !important;
+        display: block !important;
+    }
+
+    .offside-navbar--menu.child-menu .offside-navbar--menu__item a {
+        padding-left: 30px !important;
+    }
+
+    table {
+        min-width: 600px !important;
+    }
+
+    .table-responsive-wrapper::after {
+        content: '→' !important;
+        position: absolute !important;
+        right: 1rem !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        font-size: 1.5rem !important;
+        color: var(--clr-primary) !important;
+        animation: slide-hint 2s infinite !important;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 767px) and (orientation: landscape) {
+    .mobile-nav-toggle {
+        top: 0.5rem !important;
+        right: 0.5rem !important;
+    }
+
+    .hero-section {
+        min-height: 70vh !important;
+    }
+
+    .mobile-menu {
+        padding-top: 3rem !important;
+    }
+}
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    /* Re-order content for mobile
+       Ordning: 1. Intro, 2. Platsschemat, 3. Prislista, 4. Vaccininformation, 5. FAQ */
+    html {
+        overflow-x: hidden !important;
+        font-size: 16px !important;
+        -webkit-text-size-adjust: 100% !important;
+        -ms-text-size-adjust: 100% !important;
+        text-size-adjust: 100% !important;
+        zoom: 1 !important;
+        transform: scale(1) !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+
+    body {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: translateX(0) !important;
+    }
+
+    /* Fix all containers to respect viewport width */
+    body * {
+        box-sizing: border-box !important;
+    }
+
+    /* Prevent any element from causing horizontal scroll and fix left cutoff */
+    body,
+    html {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .welcome-header,
+    .navigation,
+    .main-content,
+    .page-content,
+    main,
+    section,
+    article {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Ensure content doesn't get cut off on left */
+    .page__content--left-align,
+    article.page__content--left-align {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Fix mobile menu - ensure it starts hidden */
+    .offside-navbar {
+        width: 0 !important;
+        display: none !important;
+    }
+
+    .offside-navbar--menu.child-menu {
+        display: none !important;
+    }
+
+    .footer__links {
+        display: none !important;
+    }
+
+    .navigation__left--menu,
+    .header-navigation-menu {
+        display: none !important;
+    }
+
+    /* FORCE footer menu closed by default */
+    nav.footer__link-nav ul#footer__links {
+        display: none !important;
+    }
+
+    nav.footer__link-nav ul#footer__links:not(.open):not(.visible):not(:target) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* Only show mobile menu when toggled */
+    .offside-navbar.show-side-nav,
+    .offside-navbar.open {
+        width: 100% !important;
+        display: block !important;
+    }
+
+    .offside-navbar--menu.child-menu.open {
+        display: block !important;
+    }
+
+    .footer__links.visible,
+    .footer__links.open,
+    nav.footer__link-nav ul#footer__links.open,
+    nav.footer__link-nav ul#footer__links.visible,
+    nav.footer__link-nav ul#footer__links:target {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+    }
+
+    /* Fix footer layout on mobile */
+    footer.footer {
+        padding: 15px !important;
+        margin: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+
+    nav.footer__link-nav {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    nav.footer__link-nav ul#footer__links {
+        flex-wrap: wrap !important;
+        gap: 5px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        justify-content: center !important;
+    }
+
+    nav.footer__link-nav ul#footer__links>li.col {
+        flex: 0 1 auto !important;
+        margin: 2px !important;
+        padding: 5px 8px !important;
+    }
+
+    /* MOBILE ORDERING - Make main container flex */
+    main,
+    .main-content,
+    .page-content,
+    body>.container,
+    body>.container-fluid {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* 1. Intro first */
+    article.page__content--left-align,
+    .intro-content {
+        order: 1 !important;
+    }
+
+    /* 2. Location/Schedule */
+    aside,
+    .sidebar-content,
+    .location-schedule-wrapper,
+    .location-schedule {
+        order: 2 !important;
+    }
+
+    /* 3. Price heading */
+    .price-heading {
+        order: 3 !important;
+    }
+
+    /* 4. Price toggles */
+    .price-toggle-labels {
+        order: 4 !important;
+    }
+
+    /* 5. Price table */
+    .price-box,
+    section.price-box {
+        order: 5 !important;
+    }
+
+    /* 6. Vaccine info */
+    .vaccination-info,
+    section.vaccination-info,
+    .vaccine-heading {
+        order: 6 !important;
+    }
+
+    /* 7. FAQ */
+    .faq,
+    section.faq,
+    .faq-title {
+        order: 7 !important;
+    }
+
+    /* Övriga innehåll */
+    .page__content--left-align,
+    article.page__content--left-align {
+        order: 0 !important;
+    }
+
+    .location-info {
+        text-align: left !important;
+        padding: 0 var(--CLAMP-18) !important;
+    }
+
+    .faq-question {
+        padding: var(--CLAMP-14) !important;
+        font-size: var(--CLAMP-16) !important;
+    }
+
+    .faq-content {
+        padding: 0 var(--CLAMP-14) var(--CLAMP-14) !important;
+        font-size: var(--CLAMP-15) !important;
+    }
+
+    .table-container {
+        margin: 0 calc(var(--PXR-18) * -1) !important;
+        padding: 0 var(--PXR-18) !important;
+    }
+
+    .bus-img {
+        width: calc(var(--PXP-11) * 1.2) !important;
+    }
+
+    .price-table {
+        font-size: var(--fs-table-body) !important;
+        table-layout: auto !important;
+    }
+
+    .price-table th,
+    .price-table td {
+        padding: var(--PXR-4) var(--PXR-4) !important;
+        font-size: var(--fluid-sm) !important;
+    }
+
+    /* Keep first 2 columns always visible */
+    .price-table th:nth-child(1),
+    .price-table td:nth-child(1),
+    .price-table th:nth-child(2),
+    .price-table td:nth-child(2) {
+        display: table-cell !important;
+        padding: var(--PXR-3) var(--PXR-4) !important;
+    }
+
+    /* Hide columns 3 and 4 by default, show only when toggled */
+    .price-table th:nth-child(3),
+    .price-table td:nth-child(3),
+    .price-table th:nth-child(4),
+    .price-table td:nth-child(4) {
+        display: none !important;
+        padding: var(--PXR-3) var(--PXR-4) !important;
+    }
+
+    .price-table th:first-child,
+    .price-table td:first-child {
+        width: 27% !important;
+        padding-right: var(--PXR-6) !important;
+        padding-left: var(--PXR-6) !important;
+    }
+
+    .price-table th:nth-child(n+2),
+    .price-table td:nth-child(n+2) {
+        width: 20% !important;
+        text-align: right !important;
+        white-space: nowrap !important;
+    }
+
+    .price-table thead th {
+        font-size: var(--fluid-xs) !important;
+        line-height: 1.2 !important;
+        white-space: pre-line !important;
+        vertical-align: top !important;
+    }
+
+    .price-table thead th br {
+        display: none !important;
+    }
+
+    /* Center price column headers */
+    .price-table thead th:nth-child(2),
+    .price-table thead th:nth-child(3),
+    .price-table thead th:nth-child(4) {
+        text-align: center !important;
+    }
+
+    /* Mobile toggle functionality */
+    body:has(#v-pen:checked) .price-table th:nth-child(3),
+    body:has(#v-pen:checked) .price-table td:nth-child(3) {
+        display: table-cell !important;
+    }
+
+    body:has(#v-stu:checked) .price-table th:nth-child(4),
+    body:has(#v-stu:checked) .price-table td:nth-child(4) {
+        display: table-cell !important;
+    }
+
+    /* Justera kolumnbredder för mobil */
+    .price-table th:first-child,
+    .price-table td:first-child {
+        width: 40% !important;
+        padding-left: var(--PXR-6) !important;
+    }
+
+    .price-table th:not(:first-child),
+    .price-table td:not(:first-child) {
+        width: 20% !important;
+        padding-right: var(--PXR-6) !important;
+    }
+
+    .faq-item:not([open]) .faq-content {
+        display: none !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-height: 0 !important;
+    }
+
+    .faq-item:not([open]) {
+        height: auto !important;
+        min-height: 0 !important;
+        padding-bottom: var(--PXR-4) !important;
+    }
+
+    .faq-item:not([open]) summary {
+        margin-bottom: 0 !important;
+    }
+
+    details.faq-item:not([open])>*:not(summary) {
+        display: none !important;
+    }
+
+    .price-toggle-labels {
+        gap: var(--PXR-8);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .price-toggle-label {
+        font-size: var(--CLAMP-14);
+        padding: var(--CLAMP-7) var(--CLAMP-9);
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .map-embed-container {
+        --map-max-width: 100% !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        border-radius: 0 !important;
+        --map-border-width: 0px !important;
+    }
+
+    .faq-item summary {
+        font-size: clamp(0.95rem, 1rem + 0.2vw, 1.1rem) !important;
+        padding-block: var(--space-lg) !important;
+        min-height: 5rem !important;
+    }
+
+    /* Fallback for browsers without :has() */
+    .location-schedule-wrapper,
+    .location-schedule {
+        order: -8 !important;
+        width: 100% !important;
+        margin-bottom: var(--space-lg) !important;
+    }
+
+    .price-box,
+    .price-toggle-labels {
+        order: -6 !important;
+        width: 100% !important;
+        margin-bottom: var(--space-lg) !important;
+    }
+
+    .vaccination-info {
+        order: -4 !important;
+        width: 100% !important;
+        margin-bottom: var(--space-lg) !important;
+    }
+
+    .faq-sidebar {
+        order: 1 !important;
+    }
+
+    /* Tighter spacing on mobile */
+    .container {
+        padding-inline: var(--space-sm) !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    section {
+        padding-block: var(--space-lg) !important;
+    }
+
+    .row {
+        margin-left: -0.5rem !important;
+        margin-right: -0.5rem !important;
+    }
+
+    [class*="col-"] {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* Mobile utilities */
+    .mobile-hide {
+        display: none !important;
+    }
+
+    .mobile-show {
+        display: block !important;
+    }
+
+    .mobile-text-center {
+        text-align: center !important;
+    }
+
+    .mobile-full-width {
+        width: 100% !important;
+    }
+
+    .mobile-padding-sm {
+        padding: 0.5rem !important;
+    }
+
+    .mobile-margin-bottom {
+        margin-bottom: 1rem !important;
+    }
+
+    /* Forms */
+    .form-group {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .form-label {
+        font-size: 0.875rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .form-control,
+    .form-select {
+        padding: 0.75rem 1rem !important;
+        font-size: 16px !important;
+        border-radius: var(--radius-sm) !important;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 1rem !important;
+        width: 100% !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .btn-group {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    /* Cards */
+    .card {
+        border-radius: var(--radius-sm) !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .card-body {
+        padding: 1rem !important;
+    }
+
+    .container-fluid {
+        padding: 0 !important;
+    }
+
+    .page__content,
+    .page__sidebar {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1rem !important;
+    }
+
+    /* Auto-close other details when opening new one */
+    details.vaccine-item:not([open])+details.vaccine-item[open] {
+        margin-top: var(--space-md) !important;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+    html {
+        font-size: 16px !important;
+    }
+
+    /* Heading scaling */
+    h1 {
+        font-size: clamp(1.5rem, 5vw, 2rem) !important;
+    }
+
+    h2 {
+        font-size: clamp(1.25rem, 4vw, 1.5rem) !important;
+    }
+
+    h3 {
+        font-size: clamp(1.125rem, 3.5vw, 1.25rem) !important;
+    }
+
+    h4,
+    h5,
+    h6 {
+        font-size: clamp(1rem, 3vw, 1.125rem) !important;
+    }
+
+    /* Body text */
+    p,
+    li,
+    td {
+        font-size: var(--fluid-base, 16px) !important;
+        line-height: 1.6 !important;
+    }
+
+    .welcome-title {
+        font-size: 1.4em !important;
+    }
+
+    .welcome-subtitle {
+        font-size: 1.0em !important;
+    }
+}
+
+/* Ultra small phones */
+@media (max-width: 374px) {
+    /* Ultra compact spacing */
+    .container {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    /* Smaller headings */
+    h1 {
+        font-size: 1.375rem !important;
+    }
+
+    h2 {
+        font-size: 1.25rem !important;
+    }
+
+    h3 {
+        font-size: 1.125rem !important;
+    }
+
+    /* Compact cards */
+    .vaccine-card,
+    .price-card {
+        padding: 0.75rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    /* Smaller images */
+    .bus-img {
+        max-height: 150px !important;
+    }
+}

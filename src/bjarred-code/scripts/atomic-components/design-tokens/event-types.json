@@ -1,0 +1,80 @@
+{
+  "eventTypes": {
+    "user": [
+      "click",
+      "hover",
+      "focus",
+      "blur",
+      "input",
+      "change",
+      "keydown",
+      "keyup",
+      "submit",
+      "resize",
+      "scroll"
+    ],
+    "custom": [
+      "vaccine:component:ready",
+      "vaccine:app:ready",
+      "vaccine:accordion:ready",
+      "vaccine:accordion:toggle",
+      "vaccine:gdpr:consent",
+      "vaccine:gdpr:banner:shown",
+      "vaccine:lightbox:open",
+      "vaccine:lightbox:close",
+      "vaccine:price-toggle:change",
+      "vaccine:pwa:install:prompt",
+      "vaccine:pwa:install:success",
+      "vaccine:table:responsive:change",
+      "vaccine:scroll:smooth:start",
+      "vaccine:scroll:smooth:end"
+    ],
+    "performance": [
+      "vaccine:perf:debounced",
+      "vaccine:perf:throttled",
+      "vaccine:perf:metric"
+    ],
+    "error": [
+      "vaccine:component:error",
+      "vaccine:eventmanager:error",
+      "vaccine:eventmanager:destroyed"
+    ]
+  },
+  "eventConfig": {
+    "debounce": {
+      "scroll": 100,
+      "resize": 250,
+      "input": 300,
+      "search": 500,
+      "keyup": 300
+    },
+    "throttle": {
+      "mousemove": 16,
+      "scroll": 16,
+      "resize": 16,
+      "touchmove": 16
+    },
+    "passive": {
+      "scroll": true,
+      "wheel": true,
+      "touchstart": true,
+      "touchmove": true,
+      "mousewheel": true
+    }
+  },
+  "accessibility": {
+    "announcements": {
+      "accordion": {
+        "expand": "Avsnitt utvidgat",
+        "collapse": "Avsnitt minimerat"
+      },
+      "lightbox": {
+        "open": "Ljuslåda öppnad",
+        "close": "Ljuslåda stängd"
+      },
+      "price_toggle": {
+        "change": "Prisvy ändrad till {type}"
+      }
+    }
+  }
+}

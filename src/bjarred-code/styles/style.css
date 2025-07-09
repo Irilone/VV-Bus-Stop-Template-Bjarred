@@ -1,0 +1,2904 @@
+/* ==========================================================================
+   VACCINE BJARRED APP - ISOLATED SCOPED STYLES
+   All styles are scoped under #vaccine-bjarred-app to prevent conflicts
+========================================================================== */
+/* ────────────────────────────────
+   Remove the empty spacer row that
+   appears above #page-content
+   (e.g <h1 id="page-content">delete-me</h1>)
+──────────────────────────────────*/
+.section.page__content-wrapper.row,
+.section.row {
+    display: none !important;
+}
+
+#vaccine-bjarred-app {
+    /* Custom Properties - Scoped */
+    --vb-primary: #012363;
+    --vb-secondary: #40E0D0;
+    --vb-text: #333333;
+    --vb-bg: #ffffff;
+    --vb-border: #e0e0e0;
+
+    /* Typography - Scoped - Optimized Bootstrap 5.3 Pattern */
+    --vb-fs-h1: clamp(2rem, 4vw + 1rem, 3rem);
+    --vb-fs-h2: clamp(1.75rem, 3vw + 1rem, 2.25rem);
+    --vb-fs-h3: clamp(1.3rem, 2vw + 1rem, 1.75rem);
+    --vb-fs-body: clamp(0.875rem, 1vw + 0.8rem, 1rem);
+    --vb-fs-small: clamp(0.75rem, 0.5vw + 0.7rem, 0.875rem);
+
+    /* Spacing - Scoped - Optimized Bootstrap 5.3 Pattern */
+    --vb-space-xs: clamp(0.25rem, 0.5vw + 0.2rem, 0.375rem);
+    --vb-space-sm: clamp(0.5rem, 1vw + 0.4rem, 0.75rem);
+    --vb-space-md: clamp(1rem, 2vw + 0.8rem, 1.5rem);
+    --vb-space-lg: clamp(2rem, 4vw + 1.5rem, 3rem);
+    --vb-space-xl: clamp(3rem, 6vw + 2rem, 5rem);
+
+    /* Radius - Scoped */
+    --vb-radius-sm: 4px;
+    --vb-radius-md: 8px;
+    --vb-radius-lg: 16px;
+}
+
+/* Legacy styles - TO BE REFACTORED */
+.address-label {
+    font-weight: 500;
+}
+
+html body .page__content.col-md-8.page__content--left-align h2 {
+    width: clamp(20rem, 100%, 31rem) !important;
+}
+
+html body .page__sidebar.col-md-4 h2 {
+    width: clamp(21.444rem, 110%, 23rem) !important;
+}
+
+article#Priser h2 {
+    margin-bottom: 0 !important;
+}
+
+article#Priser,
+article#Schema,
+article#FAQ {
+    margin-block: 0 !important;
+}
+
+.location-schedule thead th:first-child {
+    border-top-left-radius: var(--radius-md);
+}
+
+.location-schedule thead th:last-child {
+    border-top-right-radius: var(--radius-md);
+}
+
+html body h2 {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: var(--CLAMP-36);
+    margin-left: 0;
+}
+
+.row.row0 {
+    margin-top: 0 !important;
+}
+
+article.page__content.col-md-8.page__content--left-align {
+    width: clamp(280px, 55vw, 1000px);
+    /* Support small phones (iPhone SE: 320px) */
+}
+
+aside.page__sidebar.col-md-4 {
+    width: clamp(180px, 35vw, 600px);
+    /* Allow sidebar on small phones */
+}
+
+table.location-schedule.caption-top {
+    caption-side: top;
+}
+
+.row.row2,
+.row.row1 {
+    margin-top: 0rem !important;
+}
+
+h1#page-content.page__content-title {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.textblock__body img {
+    height: auto !important;
+    width: 35% !important;
+}
+
+/* ==========================================================================
+   0. Normalizr, Resets, and Root Variables
+   Basgrunder för hela webbplatsen - resettar standardstilar och definierar variabler
+========================================================================== */
+/* Box Sizing & Font Smoothing Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+/* Fix: Removes the unwanted top margin from the accessibility navigation bar. */
+nav#accessibility-navigation {
+    margin-top: 0 !important;
+}
+
+/* Base HTML & Body Styles */
+html {
+    font-family: var(--ff-primary, 'Filson Pro', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji') !important;
+    line-height: var(--lh-base) !important;
+    text-size-adjust: 100% !important;
+    tab-size: var(--PXR-4) !important;
+    font-size: var(--fs-base) !important;
+    scroll-behavior: smooth !important;
+    overflow-x: hidden !important;
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: var(--ff-primary, 'Filson Pro', sans-serif) !important;
+    font-size: var(--fs-body) !important;
+    font-weight: var(--fw-normal) !important;
+    line-height: var(--lh-body) !important;
+    color: var(--clr-body) !important;
+    background: var(--clr-bg) !important;
+    font-smoothing: antialiased !important;
+    text-rendering: optimizeLegibility !important;
+    overflow-x: hidden !important;
+}
+
+/* Root Variable Definitions */
+:root {
+    /* Bootstrap 5.3 Breakpoints */
+    --bs-breakpoint-xs: 0;
+    --bs-breakpoint-sm: 576px;
+    --bs-breakpoint-md: 768px;
+    --bs-breakpoint-lg: 992px;
+    --bs-breakpoint-xl: 1200px;
+    --bs-breakpoint-xxl: 1400px;
+    /* Animation Durations */
+    --duration-instant: 0ms;
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 400ms;
+    --duration-slower: 600ms;
+    --duration-slowest: 1000ms;
+    /* Easing Functions */
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    /* Semantic Spacing Scale */
+    --space-xs: var(--PXR-4);
+    /* 4px */
+    --space-sm: var(--PXR-8);
+    /* 8px */
+    --space-md: var(--PXR-16);
+    /* 16px */
+    --space-lg: var(--PXR-24);
+    /* 24px */
+    --space-xl: var(--PXR-32);
+    /* 32px */
+    --space-2xl: var(--PXR-40);
+    /* 40px */
+    --space-3xl: clamp(3rem, 5vw, 4rem);
+    /* 48-64px */
+    --space-4xl: clamp(4rem, 7vw, 6rem);
+    /* 64-96px */
+    /* Custom Fluid Typography Scale - Bootstrap 5.3 Optimized */
+    --fluid-xs: clamp(0.75rem, 0.5vw + 0.7rem, 0.875rem);
+    /* 12-14px */
+    --fluid-sm: clamp(0.875rem, 1vw + 0.8rem, 1rem);
+    /* 14-16px */
+    --fluid-base: clamp(1rem, 1.5vw + 0.9rem, 1.125rem);
+    /* 16-18px */
+    --fluid-md: clamp(1.125rem, 2vw + 1rem, 1.25rem);
+    /* 18-20px */
+    --fluid-lg: clamp(1.25rem, 2.5vw + 1.1rem, 1.5rem);
+    /* 20-24px */
+    --fluid-xl: clamp(1.5rem, 3vw + 1.3rem, 2rem);
+    /* 24-32px */
+    --fluid-2xl: clamp(2rem, 4vw + 1.5rem, 3rem);
+    /* 32-48px */
+    --fluid-3xl: clamp(2.5rem, 5vw + 2rem, 3.5rem);
+    /* 40-56px */
+    /* Colors - Light Mode (default) & from second :root block */
+    --clr-primary: #012363;
+    --clr-primary-dark: #0B496E;
+    --clr-heading: #003366;
+    --clr-body: #012363;
+    --clr-accent: #4AA6C9;
+    --clr-brand-500: #1f7ea4;
+    --clr-bg: #ffffff;
+    --clr-bg-alt: #eef5ff;
+    --clr-bg-card: #E0F3FA;
+    --clr-border: #e1e7f0;
+    --clr-white: #ffffff;
+    --clr-black: #000000;
+    --grad-price-table: linear-gradient(150deg, #5a9fe0 0%, #518ece 50%, #477eba 100%);
+    --grad-location-table: linear-gradient(to left, #b4bfff 40%, #cdd8ff 100%);
+    --blue-primary: #012363;
+    --blue-dark: #003366;
+    --bg-service: #46b5ff;
+    --bg-footer: #eff9ff;
+    --text-white: #ffffff;
+    /* Base Font & Line Height */
+    --ff-primary: 'Filson Pro', sans-serif;
+    --font-family-base: filsonpro, sans-serif;
+    --fs-base: 18px;
+    --lh-base: 1.5;
+    /* Radii & Shadows */
+    --radius-sm: 0.3333rem;
+    --radius-md: 0.4444rem;
+    --radius-lg: 0.6667rem;
+    --border-radius: 8px;
+    --shadow-sm: 0 3px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.12);
+    /* Font Sizes */
+    --fs-h1: 2.6667rem;
+    /* 48px */
+    --fs-h2: 2.0000rem;
+    /* 36px */
+    --fs-h3: 1.5556rem;
+    /* 28px */
+    --fs-h4: 1.3333rem;
+    /* 24px */
+    --fs-h5: 1.2222rem;
+    /* 22px */
+    --fs-h6: 1.1111rem;
+    /* 20px */
+    --fs-body: 1.0000rem;
+    /* 18px */
+    --fs-table-header: 0.9444rem;
+    /* 17px */
+    --fs-table-body: 0.8333rem;
+    /* 15px */
+    /* Font Weights */
+    --fw-black: 900;
+    --fw-heavy: 800;
+    --fw-bold: 700;
+    --fw-medium: 600;
+    --fw-regular: 500;
+    --fw-normal: 400;
+    /* Line Heights */
+    --lh-heading: 1.2;
+    --lh-body: 1.6;
+    /* Pixel-Based Design Tokens (rem) */
+    --PXR-1: 0.0556rem;
+    --PXR-2: 0.1111rem;
+    --PXR-3: 0.1667rem;
+    --PXR-4: 0.2222rem;
+    --PXR-5: 0.2778rem;
+    --PXR-6: 0.3333rem;
+    --PXR-7: 0.3889rem;
+    --PXR-8: 0.4444rem;
+    --PXR-9: 0.5rem;
+    --PXR-10: 0.5556rem;
+    --PXR-11: 0.6111rem;
+    --PXR-12: 0.6667rem;
+    --PXR-13: 0.7222rem;
+    --PXR-14: 0.7778rem;
+    --PXR-15: 0.8333rem;
+    --PXR-16: 0.8889rem;
+    --PXR-17: 0.9444rem;
+    --PXR-18: 1rem;
+    --PXR-19: 1.0556rem;
+    --PXR-20: 1.1111rem;
+    --PXR-21: 1.1667rem;
+    --PXR-22: 1.2222rem;
+    --PXR-23: 1.2778rem;
+    --PXR-24: 1.3333rem;
+    --PXR-25: 1.3889rem;
+    --PXR-26: 1.4444rem;
+    --PXR-27: 1.5rem;
+    --PXR-28: 1.5556rem;
+    --PXR-29: 1.6111rem;
+    --PXR-30: 1.6667rem;
+    --PXR-31: 1.7222rem;
+    --PXR-32: 1.7778rem;
+    --PXR-33: 1.8333rem;
+    --PXR-34: 1.8889rem;
+    --PXR-35: 1.9444rem;
+    --PXR-36: 2rem;
+    --PXR-37: 2.0556rem;
+    --PXR-38: 2.1111rem;
+    --PXR-39: 2.1667rem;
+    --PXR-40: 2.2222rem;
+    /* Pixel-Based Design Tokens (em) */
+    --PXE-1: 0.0556em;
+    --PXE-2: 0.1111em;
+    --PXE-3: 0.1667em;
+    --PXE-4: 0.2222em;
+    --PXE-5: 0.2778em;
+    --PXE-6: 0.3333em;
+    --PXE-7: 0.3889em;
+    --PXE-8: 0.4444em;
+    --PXE-9: 0.5em;
+    --PXE-10: 0.5556em;
+    --PXE-11: 0.6111em;
+    --PXE-12: 0.6667em;
+    --PXE-13: 0.7222em;
+    --PXE-14: 0.7778em;
+    --PXE-15: 0.8333em;
+    --PXE-16: 0.8889em;
+    --PXE-17: 0.9444em;
+    --PXE-18: 1em;
+    --PXE-19: 1.0556em;
+    --PXE-20: 1.1111em;
+    --PXE-21: 1.1667em;
+    --PXE-22: 1.2222em;
+    --PXE-23: 1.2778em;
+    --PXE-24: 1.3333em;
+    --PXE-25: 1.3889em;
+    --PXE-26: 1.4444em;
+    --PXE-27: 1.5em;
+    --PXE-28: 1.5556em;
+    --PXE-29: 1.6111em;
+    --PXE-30: 1.6667em;
+    --PXE-31: 1.7222em;
+    --PXE-32: 1.7778em;
+    --PXE-33: 1.8333em;
+    --PXE-34: 1.8889em;
+    --PXE-35: 1.9444em;
+    --PXE-36: 2em;
+    --PXE-37: 2.0556em;
+    --PXE-38: 2.1111em;
+    --PXE-39: 2.1667em;
+    --PXE-40: 2.2222em;
+    /* Pixel-Based Design Tokens (%) */
+    --PXP-1: 5.5556%;
+    --PXP-2: 11.1111%;
+    --PXP-3: 16.6667%;
+    --PXP-4: 22.2222%;
+    --PXP-5: 27.7778%;
+    --PXP-6: 33.3333%;
+    --PXP-7: 38.8889%;
+    --PXP-8: 44.4444%;
+    --PXP-9: 50%;
+    --PXP-10: 55.5556%;
+    --PXP-11: 61.1111%;
+    --PXP-12: 66.6667%;
+    --PXP-13: 72.2222%;
+    --PXP-14: 77.7778%;
+    --PXP-15: 83.3333%;
+    --PXP-16: 88.8889%;
+    --PXP-17: 94.4444%;
+    --PXP-18: 100%;
+    --PXP-19: 105.5556%;
+    --PXP-20: 111.1111%;
+    --PXP-21: 116.6667%;
+    --PXP-22: 122.2222%;
+    --PXP-23: 127.7778%;
+    --PXP-24: 133.3333%;
+    --PXP-25: 138.8889%;
+    --PXP-26: 144.4444%;
+    --PXP-27: 150%;
+    --PXP-28: 155.5556%;
+    --PXP-29: 161.1111%;
+    --PXP-30: 166.6667%;
+    --PXP-31: 172.2222%;
+    --PXP-32: 177.7778%;
+    --PXP-33: 183.3333%;
+    --PXP-34: 188.8889%;
+    --PXP-35: 194.4444%;
+    --PXP-36: 200%;
+    --PXP-37: 205.5556%;
+    --PXP-38: 211.1111%;
+    --PXP-39: 216.6667%;
+    --PXP-40: 222.2222%;
+    /* Clamp-Based Design Tokens */
+    --CLAMP-1: clamp(0.05rem, 0.1vw, 0.0556rem);
+    --CLAMP-2: clamp(0.1rem, 0.2vw, 0.1111rem);
+    --CLAMP-3: clamp(0.15rem, 0.3vw, 0.1667rem);
+    --CLAMP-4: clamp(0.2rem, 0.4vw, 0.2222rem);
+    --CLAMP-5: clamp(0.25rem, 0.5vw, 0.2778rem);
+    --CLAMP-6: clamp(0.3rem, 0.6vw, 0.3333rem);
+    --CLAMP-7: clamp(0.35rem, 0.7vw, 0.3889rem);
+    --CLAMP-8: clamp(0.4rem, 0.8vw, 0.4444rem);
+    --CLAMP-9: clamp(0.45rem, 0.9vw, 0.5rem);
+    --CLAMP-10: clamp(0.5rem, 1vw, 0.5556rem);
+    --CLAMP-11: clamp(0.55rem, 1.1vw, 0.6111rem);
+    --CLAMP-12: clamp(0.6rem, 1.2vw, 0.6667rem);
+    --CLAMP-13: clamp(0.65rem, 1.3vw, 0.7222rem);
+    --CLAMP-14: clamp(0.7rem, 1.4vw, 0.7778rem);
+    --CLAMP-15: clamp(0.75rem, 1.5vw, 0.8333rem);
+    --CLAMP-16: clamp(0.8rem, 1.6vw, 0.8889rem);
+    --CLAMP-17: clamp(0.85rem, 1.7vw, 0.9444rem);
+    --CLAMP-18: clamp(0.9rem, 1.8vw, 1rem);
+    --CLAMP-19: clamp(0.95rem, 1.9vw, 1.0556rem);
+    --CLAMP-20: clamp(1rem, 2vw, 1.1111rem);
+    --CLAMP-21: clamp(1.05rem, 2.1vw, 1.1667rem);
+    --CLAMP-22: clamp(1.1rem, 2.2vw, 1.2222rem);
+    --CLAMP-23: clamp(1.15rem, 2.3vw, 1.2778rem);
+    --CLAMP-24: clamp(1.2rem, 2.4vw, 1.3333rem);
+    --CLAMP-25: clamp(1.25rem, 2.5vw, 1.3889rem);
+    --CLAMP-26: clamp(1.3rem, 2.6vw, 1.4444rem);
+    --CLAMP-27: clamp(1.35rem, 2.7vw, 1.5rem);
+    --CLAMP-28: clamp(1.4rem, 2.8vw, 1.5556rem);
+    --CLAMP-29: clamp(1.45rem, 2.9vw, 1.6111rem);
+    --CLAMP-30: clamp(1.5rem, 3vw, 1.6667rem);
+    --CLAMP-31: clamp(1.55rem, 3.1vw, 1.7222rem);
+    --CLAMP-32: clamp(1.6rem, 3.2vw, 1.7778rem);
+    --CLAMP-33: clamp(1.65rem, 3.3vw, 1.8333rem);
+    --CLAMP-34: clamp(1.7rem, 3.4vw, 1.8889rem);
+    --CLAMP-35: clamp(1.75rem, 3.5vw, 1.9444rem);
+    --CLAMP-36: clamp(1.8rem, 3.6vw, 2rem);
+    --CLAMP-37: clamp(1.85rem, 3.7vw, 2.0556rem);
+    --CLAMP-38: clamp(1.9rem, 3.8vw, 2.1111rem);
+    --CLAMP-39: clamp(1.95rem, 3.9vw, 2.1667rem);
+    --CLAMP-40: clamp(2rem, 4vw, 2.2222rem);
+    --CLAMP-48: clamp(2.4rem, 4.8vw, 2.6667rem);
+    --CLAMP-56: clamp(2.8rem, 5.6vw, 3.1111rem);
+    --CLAMP-64: clamp(3.2rem, 6.4vw, 3.5556rem);
+    --CLAMP-72: clamp(3.6rem, 7.2vw, 4rem);
+    --CLAMP-80: clamp(4rem, 8vw, 4.4444rem);
+    --CLAMP-96: clamp(4.8rem, 9.6vw, 5.3333rem);
+    --CLAMP-110: clamp(5.5rem, 11vw, 6.1111rem);
+    --CLAMP-144: clamp(7.2rem, 14.4vw, 8rem);
+    --CLAMP-160: clamp(8rem, 16vw, 8.8889rem);
+    --CLAMP-180: clamp(9rem, 18vw, 10rem);
+    --CLAMP-184: clamp(9.2rem, 18.4vw, 10.2222rem);
+    --CLAMP-198: clamp(9.9rem, 19.8vw, 11rem);
+}
+
+/* Dark Mode Support */
+
+/* Manual Dark Mode Toggle */
+[data-theme="dark"] {
+    --clr-primary: #4AA6C9;
+    --clr-primary-dark: #5BB5D8;
+    --clr-heading: #E0F3FA;
+    --clr-body: #CDDBE6;
+    --clr-accent: #6BC4E7;
+    --clr-brand-500: #5BB5D8;
+    --clr-bg: #0B1929;
+    --clr-bg-alt: #142438;
+    --clr-bg-card: #1A2F47;
+    --clr-border: #2A3F5C;
+    --clr-white: #0B1929;
+    --clr-black: #E0F3FA;
+}
+
+/* ==========================================================================
+   1. Base Element Styling
+   Grundstilar för HTML-element utan klasser
+========================================================================== */
+article.page__content--left-align.col-md-8 {
+    /* margin: logical sides */
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    /* padding: logical sides */
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+}
+
+b,
+strong {
+    font-weight: var(--fw-bold);
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: var(--PXE-18);
+}
+
+small {
+    font-size: var(--PXP-15);
+}
+
+/* ==========================================================================
+   EMERGENCY MOBILE PATCH - Critical hotfixes for immediate deployment
+   Applied from Codebase-fix-session1.md
+========================================================================== */
+@media (max-width: 575px) {
+  #vaccine-bjarred-app {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .table-scroll-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin: 0 -1rem !important;
+    padding: 0 1rem !important;
+  }
+
+  button, a, summary, input[type="radio"] + label {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    padding: 0.75rem !important;
+  }
+
+  .location-schedule, .price-table {
+    font-size: 0.75rem !important;
+    min-width: 300px !important;
+  }
+}
+
+sub,
+sup {
+    font-size: var(--PXP-14) !important;
+    line-height: 0 !important;
+    position: relative !important;
+    vertical-align: baseline !important;
+}
+
+sub {
+    bottom: calc(var(--PXE-5) * -1) !important;
+}
+
+sup {
+    top: calc(var(--PXE-9) * -1) !important;
+}
+
+table {
+    border-color: currentColor !important;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit !important;
+    font-size: var(--PXP-18) !important;
+    line-height: var(--lh-base) !important;
+    margin: 0 !important;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    appearance: button !important;
+}
+
+legend {
+    padding: 0 !important;
+}
+
+progress {
+    vertical-align: baseline !important;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+    height: auto !important;
+}
+
+[type="search"] {
+    appearance: textfield !important;
+    outline-offset: calc(var(--PXR-2) * -1) !important;
+}
+
+::-webkit-search-decoration {
+    appearance: none !important;
+}
+
+::-webkit-file-upload-button {
+    appearance: button !important;
+    font: inherit !important;
+}
+
+summary {
+    display: list-item !important;
+}
+
+img,
+svg,
+video {
+    display: block !important;
+    max-width: var(--PXP-18) !important;
+    height: auto !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body>a {
+    color: var(--blue-primary) !important;
+    text-decoration: underline !important;
+    transition: all 0.2s ease !important;
+    display: inline-block;
+}
+
+a:hover {
+    color: #2196F3 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--blue-dark) !important;
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY SYSTEM v2.0 (HIGH SPECIFICITY OVERRIDE)
+   Typografi med hög specificitet för att överskriva standardstilar
+========================================================================== */
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6 {
+    font-family: var(--ff-primary) !important;
+    color: var(--clr-heading) !important;
+    line-height: var(--lh-heading) !important;
+    margin: var(--space-md) 0 var(--space-sm) !important;
+}
+
+html body p {
+    font-family: var(--ff-primary) !important;
+    font-size: var(--fs-body) !important;
+    font-weight: var(--fw-normal) !important;
+    color: var(--clr-body) !important;
+    line-height: var(--lh-body) !important;
+    margin: 0 0 var(--PXR-18) 0 !important;
+    max-width: 100% !important;
+}
+
+html body h1,
+html body .page__content-title {
+    font-size: clamp(2rem, 2.2rem + 1vw, var(--fs-h1)) !important;
+    font-weight: var(--fw-black) !important;
+}
+
+html body h2,
+html body .subtitle {
+    font-size: clamp(1.5rem, 1.7rem + 0.6vw, var(--fs-h2)) !important;
+    font-weight: var(--fw-heavy) !important;
+}
+
+html body h3,
+html body .faq-title {
+    font-size: clamp(1.25rem, 1.35rem + 0.4vw, var(--fs-h3)) !important;
+    font-weight: var(--fw-bold) !important;
+    color: var(--clr-heading) !important;
+    margin-block: var(--space-md) var(--space-sm) !important;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+html body .price-heading,
+.price-heading {
+    font-size: var(--CLAMP-36) !important;
+    font-weight: var(--fw-bold) !important;
+    color: var(--clr-heading) !important;
+    margin-block: var(--space-md) var(--space-sm) !important;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+html body h4,
+html body .vaccine-heading {
+    font-size: clamp(1.125rem, 1.2rem + 0.3vw, var(--fs-h4)) !important;
+    font-weight: var(--fw-medium) !important;
+}
+
+html body h5 {
+    font-size: clamp(1.0625rem, 1.1rem + 0.25vw, var(--fs-h5)) !important;
+    font-weight: var(--fw-regular) !important;
+}
+
+html body h6 {
+    font-size: clamp(1rem, 1.05rem + 0.2vw, var(--fs-h6)) !important;
+    font-weight: var(--fw-bold) !important;
+}
+
+html body ul,
+html body ol {
+    padding-left: var(--PXE-27) !important;
+    margin-bottom: var(--PXR-18) !important;
+}
+
+html body th,
+html body .list-heading {
+    font-size: clamp(0.875rem, 0.9rem + 0.2vw, var(--fs-table-header)) !important;
+    font-weight: var(--fw-bold) !important;
+    color: var(--clr-white) !important;
+}
+
+html body td {
+    font-size: clamp(0.8125rem, 0.825rem + 0.1vw, var(--fs-table-body)) !important;
+    font-weight: var(--fw-medium) !important;
+    color: var(--clr-black) !important;
+}
+
+html body li {
+    font-size: var(--fs-table-body) !important;
+    font-weight: var(--fw-medium) !important;
+    color: var(--clr-body) !important;
+}
+
+html body span.font-bold {
+    font-weight: var(--fw-bold) !important;
+}
+
+html body span.font-heavy {
+    font-weight: var(--fw-heavy) !important;
+}
+
+html body span.font-normal {
+    font-weight: var(--fw-normal) !important;
+}
+
+/* ==========================================================================
+   3. LAYOUT & CORE COMPONENTS
+   Huvudkomponenter för layout och innehållsstruktur
+========================================================================== */
+/* Bus Gallery */
+.bus-gallery-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-block: var(--space-md);
+}
+
+.bus-gallery-col {
+    flex: 1 1 220px;
+    min-width: 220px;
+    max-width: var(--PXP-18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+}
+
+.img-wrapper {
+    width: var(--PXP-18);
+    background: transparent;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-sm);
+}
+
+.bus-img {
+    width: var(--PXP-12);
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: 0 var(--PXR-2) var(--PXR-8) 0 rgba(0, 32, 64, 0.12);
+    transition: box-shadow var(--duration-normal) var(--ease-in-out), transform var(--duration-normal) var(--ease-out);
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    position: relative;
+}
+
+.bus-img:hover {
+    box-shadow: 0 var(--PXR-8) var(--PXR-16) 0 rgba(0, 32, 64, 0.2);
+    transform: translateY(-4px);
+}
+
+.bus-title {
+    font-size: var(--PXR-18);
+    font-weight: var(--fw-regular);
+    color: var(--clr-heading);
+    margin: var(--CLAMP-4) 0 0 0;
+}
+
+/* Price Box & Table */
+.price-box {
+    background: transparent;
+    border-radius: var(--radius-sm);
+    padding: 0;
+    margin: 0;
+    width: var(--PXP-18);
+    max-width: var(--PXP-18);
+    min-width: var(--PXP-18);
+}
+
+.price-box.compact {
+    padding: 0;
+}
+
+.price-toggle-input {
+    position: absolute;
+    width: var(--PXR-1);
+    height: var(--PXR-1);
+    opacity: 0;
+    overflow: hidden;
+}
+
+.price-toggle-labels {
+    display: flex;
+    gap: var(--PXR-4);
+    background: var(--clr-white);
+    padding: 0;
+    border-radius: var(--radius-sm);
+    margin-inline: auto;
+    margin-block: 0 !important;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-wrap: nowrap;
+}
+
+.price-toggle-labels {
+    width: clamp(17.444rem, 96%, 20rem);
+}
+
+.price-toggle-label {
+    font-size: clamp(0.74rem, 0.75rem, 0.8rem);
+    font-weight: var(--fw-bold);
+    color: var(--clr-heading);
+    cursor: pointer;
+    background: var(--clr-bg-alt);
+    padding-block: 0.15rem;
+    padding-inline: 0.54rem;
+    margin: 0;
+    border-radius: var(--radius-sm);
+    transition: all var(--duration-normal) var(--ease-in-out);
+    text-align: center;
+    border: var(--PXR-1) solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    white-space: nowrap;
+}
+
+.price-toggle-label:hover {
+    background: var(--clr-bg-card);
+    border-color: var(--clr-accent);
+    transform: translateY(calc(var(--PXR-1) * -1));
+    box-shadow: 0 var(--PXR-2) var(--PXR-4) rgba(74, 166, 201, 0.15);
+}
+
+body:has(#v-ord:checked) label[for="v-ord"],
+body:has(#v-pen:checked) label[for="v-pen"],
+body:has(#v-stu:checked) label[for="v-stu"] {
+    background: var(--clr-primary);
+    color: var(--clr-white);
+    border-color: var(--clr-primary);
+    box-shadow: 0 var(--PXR-2) var(--PXR-8) rgba(1, 35, 99, 0.25);
+}
+
+.price-table th:nth-child(3),
+.price-table td:nth-child(3),
+.price-table th:nth-child(4),
+.price-table td:nth-child(4) {
+    display: none;
+}
+
+/* ========================================================================== 8. PRICE TABLE + LOCATION SCHEDULE (MAXIMUM SPECIFICITY) ========================================================================== */
+/* Använder fluid clamp() för responsiv tabellayout */
+html body .price-table.price-table,
+html body .location-schedule.location-schedule {
+    margin-block-start: var(--CLAMP-14) !important;
+    margin-block-end: 0 !important;
+    margin-inline: auto !important;
+    line-height: var(--lh-body) !important;
+    table-layout: fixed !important;
+    overflow: hidden !important;
+    border-collapse: collapse !important;
+    border: var(--PXR-1) solid var(--clr-border) !important;
+    padding-inline: var(--CLAMP-13) !important;
+    border-top-left-radius: var(--radius-md) !important;
+    border-top-right-radius: var(--radius-md) !important;
+    background: var(--clr-white) !important;
+}
+
+html body .price-table.price-table {
+    width: clamp(18.64rem, 23vw, 22rem) !important
+}
+
+html body .faq-section.faq-section {
+    width: clamp(18.64rem, 23vw, 22rem) !important
+}
+
+html body .location-schedule.location-schedule {
+    width: clamp(18.64rem, 23vw, 22rem) !important;
+}
+
+html body .price-table.price-table thead th {
+    background: var(--grad-price-table) !important;
+    color: var(--clr-white) !important;
+    padding: var(--CLAMP-8) var(--CLAMP-12) !important;
+    text-align: left !important;
+    font-size: clamp(0.875rem, 0.9rem + 0.2vw, var(--fs-table-header)) !important;
+    font-weight: var(--fw-medium) !important;
+    border-bottom: none !important;
+    vertical-align: top !important;
+    line-height: 1.2 !important;
+}
+
+/* Two-row headers for price columns */
+html body .price-table.price-table thead th:nth-child(2),
+html body .price-table.price-table thead th:nth-child(3),
+html body .price-table.price-table thead th:nth-child(4) {
+    white-space: pre-line !important;
+    text-align: center !important;
+    padding: var(--CLAMP-6) var(--CLAMP-8) !important;
+    font-size: clamp(0.75rem, 0.8rem + 0.15vw, 0.875rem) !important;
+}
+
+html body .price-table.price-table td {
+    padding: var(--CLAMP-8) var(--CLAMP-12) !important;
+    border-bottom: var(--PXR-1) solid var(--clr-border) !important;
+    font-family: var(--ff-primary) !important;
+    font-size: clamp(0.8125rem, 0.825rem + 0.1vw, var(--fs-table-body)) !important;
+    font-weight: var(--fw-regular) !important;
+    line-height: var(--lh-body) !important;
+    text-align: left !important;
+    color: var(--clr-black) !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    hyphens: auto !important;
+}
+
+html body .price-table.price-table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+html body .price-table.price-table tbody tr:nth-of-type(odd) {
+    background: var(--clr-bg-alt) !important;
+}
+
+html body .location-schedule.location-schedule th {
+    background: linear-gradient(145deg, #5a8fc7 0%, #4a7bb0 60%, #406ba0 100%) !important;
+    color: var(--clr-white) !important;
+    padding: var(--CLAMP-8) var(--CLAMP-8) !important;
+    text-align: center !important;
+    font-size: clamp(0.875rem, 0.9rem + 0.2vw, var(--fs-table-header)) !important;
+    font-weight: var(--fw-medium) !important;
+    border-bottom: var(--PXR-2) solid var(--clr-heading) !important;
+}
+
+html body .location-schedule.location-schedule td {
+    padding: var(--CLAMP-8) var(--CLAMP-8) !important;
+    text-align: center !important;
+    color: var(--clr-black) !important;
+    font-size: clamp(0.8125rem, 0.825rem + 0.1vw, var(--fs-table-body)) !important;
+    font-weight: var(--fw-regular) !important;
+    border-bottom: var(--PXR-1) solid var(--clr-border) !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    hyphens: auto !important;
+}
+
+html body .location-schedule.location-schedule tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+html body .location-schedule.location-schedule tbody tr:nth-child(odd) td {
+    background: var(--clr-bg-alt) !important;
+}
+
+html body .location-schedule.location-schedule tbody tr:nth-child(even) td {
+    background: var(--clr-white) !important;
+}
+
+body:has(#v-pen:checked) .price-table th:nth-child(3),
+body:has(#v-pen:checked) .price-table td:nth-child(3) {
+    display: table-cell;
+}
+
+body:has(#v-stu:checked) .price-table th:nth-child(4),
+body:has(#v-stu:checked) .price-table td:nth-child(4) {
+    display: table-cell;
+}
+
+.price-table td:nth-child(3),
+.price-table td:nth-child(4) {
+    color: var(--clr-accent) !important;
+    font-weight: var(--fw-medium) !important;
+}
+
+/* ==========================================================================
+   4. FAQ Component & Other Components
+   Komponenter för FAQ (vanliga frågor) och andra innehållsblock
+========================================================================== */
+/* Section Titles & Info Blocks */
+.section-title,
+.page__content-title,
+.subtitle {
+    font-size: var(--CLAMP-25) !important;
+    font-weight: var(--fw-bold) !important;
+    color: var(--clr-heading) !important;
+    margin: var(--space-sm) 0 var(--space-sm) 0 !important;
+}
+
+.vaccination-info {
+    background: transparent !important;
+    border-radius: var(--PXP-17) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: var(--PXP-17) !important;
+}
+
+.vaccine-heading {
+    font-size: var(--CLAMP-28) !important;
+    font-weight: var(--fw-medium) !important;
+    color: var(--clr-heading) !important;
+    margin: var(--space-sm) 0 var(--space-sm) 0 !important;
+}
+
+.halsokontroll-text {
+    font-style: normal !important;
+    color: var(--clr-body) !important;
+    margin-top: var(--CLAMP-9) !important;
+}
+
+/* FAQ - OPTIMIZED CLAMP VERSION */
+#vaccine-bjarred-app .faq-section {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    margin-bottom: 0;
+    padding-bottom: 0;
+    max-width: 100%;
+}
+
+#vaccine-bjarred-app .faq-item {
+    background: linear-gradient(145deg, #5a8fc7 0%, #4a7bb0 60%, #406ba0 100%) !important;
+    border: 1px solid transparent;
+    border-radius: clamp(4px, 0.5vw, 8px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#vaccine-bjarred-app .faq-item[open] {
+    background: linear-gradient(145deg, #5a8fc7 0%, #4a7bb0 60%, #406ba0 100%) !important;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#vaccine-bjarred-app .faq-item summary,
+#vaccine-bjarred-app .vaccine-summary {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(0.75rem, 2vw, 1.25rem);
+    cursor: pointer;
+    color: white;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 500;
+    line-height: 1.4;
+    min-height: 44px; /* Accessibility requirement */
+    border-radius: clamp(4px, 0.5vw, 8px);
+    transition: background-color 0.2s ease;
+    list-style: none;
+    position: relative;
+}
+
+#vaccine-bjarred-app .faq-item summary::-webkit-details-marker,
+#vaccine-bjarred-app .vaccine-summary::-webkit-details-marker {
+    display: none;
+}
+
+#vaccine-bjarred-app .faq-title-text {
+    flex: 1;
+    padding-right: clamp(0.5rem, 1vw, 1rem);
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    line-height: 1.3;
+    max-height: 2.6em; /* 2 rows max */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    -webkit-locale: "sv";
+    -moz-locale: "sv";
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga" 1, "kern" 1;
+}
+
+#vaccine-bjarred-app .faq-item summary::after,
+#vaccine-bjarred-app .vaccine-summary::after {
+    content: "▼";
+    font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+#vaccine-bjarred-app .faq-item[open] summary::after,
+#vaccine-bjarred-app .faq-item[open] .vaccine-summary::after {
+    transform: rotate(180deg);
+}
+
+#vaccine-bjarred-app .faq-item summary:hover,
+#vaccine-bjarred-app .vaccine-summary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#vaccine-bjarred-app .faq-item summary:focus-visible,
+#vaccine-bjarred-app .vaccine-summary:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#vaccine-bjarred-app .faq-content,
+#vaccine-bjarred-app .vaccine-content {
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.875rem, 1.3vw, 1rem);
+    line-height: 1.6;
+    color: white;
+    background: inherit; /* Inherit the gradient */
+    border-radius: 0 0 clamp(4px, 0.5vw, 8px) clamp(4px, 0.5vw, 8px);
+}
+
+#vaccine-bjarred-app .faq-content p,
+#vaccine-bjarred-app .vaccine-content p {
+    margin: 0;
+    color: white;
+}
+
+#vaccine-bjarred-app .faq-content p:not(:last-child),
+#vaccine-bjarred-app .vaccine-content p:not(:last-child) {
+    margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+@media (max-width: 768px) {
+    #vaccine-bjarred-app .faq-item summary,
+    #vaccine-bjarred-app .vaccine-summary {
+        padding: clamp(0.875rem, 3vw, 1.125rem);
+        font-size: clamp(0.875rem, 2vw, 1rem);
+    }
+    #vaccine-bjarred-app .faq-content,
+    #vaccine-bjarred-app .vaccine-content {
+        padding: clamp(0.875rem, 3vw, 1.125rem);
+        font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+    }
+    #vaccine-bjarred-app .faq-title-text {
+        line-height: 1.25;
+        max-height: 2.5em;
+        word-spacing: -0.05em;
+        letter-spacing: -0.01em;
+    }
+}
+
+@media (max-width: 375px) {
+    #vaccine-bjarred-app .faq-title-text {
+        line-height: 1.2;
+        max-height: 2.4em;
+        font-size: clamp(0.8125rem, 1.8vw, 0.9375rem);
+        word-spacing: -0.1em;
+        letter-spacing: -0.02em;
+    }
+}
+
+#vaccine-bjarred-app .faq-item[open] .faq-content,
+#vaccine-bjarred-app .faq-item[open] .vaccine-content {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#vaccine-bjarred-app .faq-item:not([open]) {
+    contain: layout style;
+}
+
+#vaccine-bjarred-app .faq-item summary::after {
+    will-change: transform;
+}
+
+#vaccine-bjarred-app .faq-item[open] summary::after {
+    will-change: auto;
+}
+
+@media (prefers-contrast: high) {
+    #vaccine-bjarred-app .faq-item {
+        border: 2px solid white;
+    }
+    #vaccine-bjarred-app .faq-item summary:focus-visible {
+        outline: 3px solid yellow;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #vaccine-bjarred-app .faq-item,
+    #vaccine-bjarred-app .faq-item summary,
+    #vaccine-bjarred-app .faq-item summary::after,
+    #vaccine-bjarred-app .vaccine-summary,
+    #vaccine-bjarred-app .vaccine-summary::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+#vaccine-bjarred-app .price-table {
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+#vaccine-bjarred-app .price-table th,
+#vaccine-bjarred-app .price-table td {
+    padding: clamp(0.5rem, 1.5vw, 0.75rem);
+    font-size: clamp(0.8125rem, 1.2vw, 0.9375rem);
+}
+
+#vaccine-bjarred-app .faq-section + .price-section,
+#vaccine-bjarred-app .price-section + .faq-section {
+    margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* ==========================================================================
+   5. UTILITY CLASSES
+   Återanvändbara hjälpklasser för layout och styling
+========================================================================== */
+/* Text Alignment & Padding */
+.text-center {
+    text-align: center;
+}
+
+.text-start {
+    text-align: left;
+}
+
+.text-end {
+    text-align: right;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.card-body.p-0 {
+    padding: 0;
+}
+
+.mt-2 {
+    margin-top: var(--CLAMP-9);
+}
+
+.mb-2 {
+    margin-bottom: var(--CLAMP-9);
+}
+
+.visually-hidden,
+.sr-only {
+    position: absolute;
+    width: var(--PXR-1);
+    height: var(--PXR-1);
+    padding: 0;
+    margin: calc(var(--PXR-1) * -1);
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Spacing Utilities */
+.p-xs {
+    padding: var(--space-xs);
+}
+
+.p-sm {
+    padding: var(--space-sm);
+}
+
+.p-md {
+    padding: var(--space-md);
+}
+
+.p-lg {
+    padding: var(--space-lg);
+}
+
+.p-xl {
+    padding: var(--space-xl);
+}
+
+.p-2xl {
+    padding: var(--space-2xl);
+}
+
+.px-xs {
+    padding-inline: var(--space-xs);
+}
+
+.px-sm {
+    padding-inline: var(--space-sm);
+}
+
+.px-md {
+    padding-inline: var(--space-md);
+}
+
+.px-lg {
+    padding-inline: var(--space-lg);
+}
+
+.px-xl {
+    padding-inline: var(--space-xl);
+}
+
+.py-xs {
+    padding-block: var(--space-xs);
+}
+
+.py-sm {
+    padding-block: var(--space-sm);
+}
+
+.py-md {
+    padding-block: var(--space-md);
+}
+
+.py-lg {
+    padding-block: var(--space-lg);
+}
+
+.py-xl {
+    padding-block: var(--space-xl);
+}
+
+.m-xs {
+    margin: var(--space-xs);
+}
+
+.m-sm {
+    margin: var(--space-sm);
+}
+
+.m-md {
+    margin: var(--space-md);
+}
+
+.m-lg {
+    margin: var(--space-lg);
+}
+
+.m-xl {
+    margin: var(--space-xl);
+}
+
+.mx-auto {
+    margin-inline: auto;
+}
+
+.my-xs {
+    margin-block: var(--space-xs);
+}
+
+.my-sm {
+    margin-block: var(--space-sm);
+}
+
+.my-md {
+    margin-block: var(--space-md);
+}
+
+.my-lg {
+    margin-block: var(--space-lg);
+}
+
+.my-xl {
+    margin-block: var(--space-xl);
+}
+
+/* Typography Utilities */
+.text-xs {
+    font-size: var(--fluid-xs);
+}
+
+.text-sm {
+    font-size: var(--fluid-sm);
+}
+
+.text-base {
+    font-size: var(--fluid-base);
+}
+
+.text-md {
+    font-size: var(--fluid-md);
+}
+
+.text-lg {
+    font-size: var(--fluid-lg);
+}
+
+.text-xl {
+    font-size: var(--fluid-xl);
+}
+
+.text-2xl {
+    font-size: var(--fluid-2xl);
+}
+
+.text-3xl {
+    font-size: var(--fluid-3xl);
+}
+
+/* Gap Utilities */
+.gap-xs {
+    gap: var(--space-xs);
+}
+
+.gap-sm {
+    gap: var(--space-sm);
+}
+
+.gap-md {
+    gap: var(--space-md);
+}
+
+.gap-lg {
+    gap: var(--space-lg);
+}
+
+.gap-xl {
+    gap: var(--space-xl);
+}
+
+/* Border Radius Utilities */
+.rounded-sm {
+    border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+/* Animation & Transition Utilities */
+.transition-fast {
+    transition-duration: var(--duration-fast);
+}
+
+.transition-normal {
+    transition-duration: var(--duration-normal);
+}
+
+.transition-slow {
+    transition-duration: var(--duration-slow);
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(var(--PXR-20));
+    transition: opacity var(--duration-slower) var(--ease-out), transform var(--duration-slower) var(--ease-out);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   6. GRID & CONTAINER SYSTEM
+   Responsiva behållare och kolumnsystem för layout
+========================================================================== */
+.container {
+    width: var(--PXP-18);
+    padding-right: var(--space-md);
+    padding-left: var(--space-md);
+    margin-right: auto;
+    margin-left: auto;
+    container-type: inline-size;
+    container-name: main-container;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    margin-right: calc(var(--space-md) * -1);
+    margin-left: calc(var(--space-md) * -1);
+}
+
+.col {
+    flex: 1 0 0%;
+    padding-right: var(--space-md);
+    padding-left: var(--space-md);
+}
+
+.page__content-wrapper {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* ========================================================================== 7. HEADER & NAVIGATION ========================================================================== */
+/* Icon Font Base */
+.fa,
+.fab,
+.fad,
+.fal,
+.far,
+.fas {
+    font-smoothing: antialiased !important;
+    font-feature-settings: normal !important;
+    display: inline-block !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    line-height: 1 !important;
+    text-rendering: auto !important;
+    font-size: 1em !important;
+    font-family: 'Font Awesome 5 Pro' !important;
+}
+
+/* Main Header Container */
+.header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    height: auto !important;
+}
+
+header .container-fluid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    --bs-gutter-x: 0 !important;
+    --bs-gutter-y: 0 !important;
+}
+
+.navigation {
+    display: flex !important;
+    flex-direction: column !important;
+    width: clamp(95vw, 100vw, 95vw);
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+}
+
+.header .float-right,
+.header .pull-right {
+    float: none !important;
+}
+
+.header [class*="position-absolute"] {
+    position: relative !important;
+}
+
+/* Welcome Header */
+.welcome-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin-bottom: 16px !important;
+    font-family: filsonpro, sans-serif !important;
+    text-align: center !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.welcome-title {
+    font-size: 38px !important;
+    color: var(--blue-primary) !important;
+    margin: 0 0 4px !important;
+    font-weight: 800 !important;
+}
+
+.welcome-subtitle {
+    font-size: 32px !important;
+    color: var(--blue-dark) !important;
+    margin: 0 !important;
+    font-weight: 600 !important;
+}
+
+/* Navigation Logo */
+.navigation__logo {
+    order: -1 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: var(--space-lg) var(--space-md) !important;
+    margin-left: 0 !important;
+    box-sizing: border-box !important;
+    height: auto !important;
+    line-height: normal !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.navigation__logo.flex-start {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.navigation__logo img {
+    max-width: 350px !important;
+    min-width: 225px !important;
+    display: block !important;
+    max-height: 40px !important;
+    object-fit: contain !important;
+    object-position: left top !important;
+    width: 50vw !important;
+}
+
+.navigation__logo>a,
+.navigation__logo>img,
+.navigation__logo>svg {
+    margin-right: auto !important;
+}
+
+body[class*="logo--normal"] .navigation__logo {
+    height: 60px !important;
+    padding-top: 50px !important;
+}
+
+/* Navigation Menu */
+.navigation__left,
+.navigation__left--menu {
+    display: flex !important;
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+}
+
+.navigation__left--menu,
+nav.navigation__item--has-mega-menu .navigation__item-category,
+.header-navigation-menu {
+    order: -1 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 0 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+    height: 60px !important;
+    flex-wrap: nowrap !important;
+    align-content: center !important;
+    align-items: center !important;
+}
+
+.navigation__item {
+    flex-grow: 1 !important;
+    flex-basis: 0 !important;
+    text-align: center !important;
+    padding: 0 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+button.navigation__item-category,
+a.navigation__item-category {
+    color: #012363 !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+}
+
+.navigation__item-category {
+    color: #012363 !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    font-weight: 600 !important;
+}
+
+.fal.fa-chevron-down.navigation__item-chevron--collapsed {
+    color: #012363 !important;
+    font-weight: 600 !important;
+}
+
+.navigation__item-chevron--collapsed,
+.navigation__item-chevron--expanded {
+    font-weight: 600 !important;
+    transition: transform 0.3s ease !important;
+}
+
+.navigation__item-category[aria-expanded="true"] .navigation__item-chevron--collapsed {
+    transform: rotate(180deg) !important;
+}
+
+/* Mega Menu */
+.navigation__item--has-mega-menu .navigation__item-category .navigation__item-chevron--collapsed,
+.navigation__item--has-mega-menu .navigation__item-category .navigation__item-chevron--expanded {
+    font-size: .75rem !important;
+    margin-left: .5rem !important;
+}
+
+.mega-menu__wrapper a.link {
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+.mega-menu__wrapper .mega-menu__item {
+    font-weight: 700 !important;
+    align-items: center;
+    display: inline-flex;
+    min-height: 2em;
+    position: relative;
+    width: 100%;
+}
+
+body.megamenu-visible .mega-container {
+    overflow-y: auto !important;
+    margin-top: 1.94rem !important;
+}
+
+/* CORRECTED Specificity Comment */
+body.theme--white.accent--turquoise .mega-container .mega-menu__wrapper .mega-menu__item,
+body.theme--white.accent--turquoise .mega-container .mega-menu__wrapper .mega-menu__item a.link
+
+/* Specificity: (0,6,2) */
+    {
+    color: #fff;
+}
+
+/* FontAwesome Chevrons */
+.navigation__item-category .fa-chevron-up {
+    display: none !important
+}
+
+.navigation__item-category .fa-chevron-down {
+    transform: rotate(0deg);
+    transition: transform .3s ease-in-out
+}
+
+.navigation__item-category[aria-expanded=true] .fa-chevron-down {
+    display: inline-block !important;
+    transform: rotate(180deg) !important
+}
+
+.fa-chevron-down:before {
+    content: "\f078"
+}
+
+.fa-chevron-up:before {
+    content: "\f077"
+}
+
+.fa-external-link:before {
+    content: "\f35d"
+}
+
+/* ==========================================================================
+   8. FOOTER
+   Sidfotsstilar och innehåll
+========================================================================== */
+footer.footer {
+    font-family: filsonpro, sans-serif !important;
+    background-color: #eff9ff !important;
+    color: #012363 !important;
+    padding: 24px 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+footer.footer a {
+    transition: all 0.2s ease !important;
+    font-family: filsonpro, sans-serif !important;
+    color: var(--clr-body-text) !important;
+    text-decoration: underline !important;
+    font-weight: normal !important;
+}
+
+footer.footer a:hover {
+    color: var(--clr-brand-500) !important;
+    text-decoration: none !important;
+}
+
+footer.footer .container-fluid {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+footer.footer .block-container,
+footer.footer .textblock,
+footer.footer .row {
+    margin: 0 !important;
+}
+
+footer.footer h4,
+footer.footer h5 {
+    font-family: filsonpro, sans-serif !important;
+    color: #012363 !important;
+    margin-top: 1em !important;
+    margin-bottom: 0.5em !important;
+    line-height: 1.3 !important;
+}
+
+footer.footer h4 {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    margin-top: 0 !important;
+}
+
+footer.footer h5 {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+
+footer.footer p {
+    font-family: filsonpro, sans-serif !important;
+    font-size: 14px !important;
+    color: #003366 !important;
+    line-height: 1.6 !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+}
+
+footer.footer p:last-child,
+footer.footer .textblock__body>p:last-of-type {
+    margin-bottom: 0 !important;
+}
+
+footer.footer p a:not([href^="tel:"]):not([href^="mailto:"]) {
+    font-family: filsonpro, sans-serif !important;
+    color: #044999 !important;
+    text-decoration: underline !important;
+    font-size: inherit !important;
+    font-weight: normal !important;
+}
+
+footer.footer a[href^="tel:"],
+footer.footer a[href^="mailto:"] {
+    font-family: filsonpro, sans-serif !important;
+    color: #0066CC !important;
+    text-decoration: underline !important;
+    font-size: inherit !important;
+}
+
+nav.footer__link-nav {
+    background-color: #1f7ea4 !important;
+    padding: 15px 15px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-family: filsonpro, sans-serif !important;
+}
+
+nav.footer__link-nav ul#footer__links {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    /* Säkerställer radlayout */
+    justify-content: space-between !important;
+    /* Jämn fördelning */
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    /* Förhindrar radbrytning */
+    gap: var(--space-md) !important;
+    /* Mellanrum mellan länkar */
+}
+
+nav.footer__link-nav ul#footer__links>li.col {
+    flex: unset !important;
+    padding: 5px 10px !important;
+    text-align: initial;
+    white-space: nowrap !important;
+}
+
+nav.footer__link-nav a.footer__link {
+    font-family: filsonpro, sans-serif !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+nav.footer__link-nav a.footer__link:hover {
+    text-decoration: underline !important;
+}
+
+.footer__link .fa-external-link {
+    font-size: .9em;
+    margin-right: .5em
+}
+
+nav.footer__link-nav button#footer__links-toggle-button {
+    background: transparent !important;
+    border: 1px solid #ffffff !important;
+    padding: 8px 10px !important;
+    margin-left: 15px !important;
+    margin-bottom: 10px !important;
+    cursor: pointer !important;
+}
+
+/* ==========================================================================
+   9. MAP STYLES
+   Kartstilar för Google Maps inbäddning
+========================================================================== */
+.map-embed-container {
+    --map-radius: 12px !important;
+    --map-shadow: 0 4px 12px rgba(1, 35, 99, 0.1) !important;
+    --map-hover-shadow: 0 7px 28px rgba(1, 35, 99, 0.18) !important;
+    --map-focus-outline-color: #007bff !important;
+    --map-max-width: 375px !important;
+    --map-aspect-ratio: 16/9 !important;
+    --map-vertical-margin: 16px !important;
+    --map-border-width: 1px !important;
+    --map-border-color: rgba(1, 35, 99, 0.15) !important;
+    --map-loading-text-color: #333 !important;
+    --map-loading-bg-color: #f0f2f5 !important;
+    --map-spinner-color: var(--map-focus-outline-color) !important;
+    --map-transition-duration: 0.25s !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: var(--map-max-width) !important;
+    margin-top: var(--map-vertical-margin) !important;
+    margin-bottom: var(--map-vertical-margin) !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    border-radius: var(--map-radius) !important;
+    overflow: hidden !important;
+    box-shadow: var(--map-shadow) !important;
+    border: var(--map-border-width) solid var(--map-border-color) !important;
+    aspect-ratio: var(--map-aspect-ratio) !important;
+    background-color: var(--map-loading-bg-color) !important;
+    transition: transform var(--map-transition-duration) ease, box-shadow var(--map-transition-duration) ease, border-color var(--map-transition-duration) ease !important;
+}
+
+.map-embed-container:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--map-hover-shadow) !important;
+    border-color: var(--map-spinner-color) !important;
+}
+
+.map-embed-frame {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+    display: block !important;
+    z-index: 1 !important;
+}
+
+.map-embed-container::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 36px !important;
+    height: 36px !important;
+    margin-top: -28px !important;
+    margin-left: -18px !important;
+    border: 4px solid rgba(0, 0, 0, 0.1) !important;
+    border-left-color: var(--map-spinner-color) !important;
+    border-radius: 50% !important;
+    animation: map-spinner-rotation 0.8s linear infinite !important;
+    z-index: 0 !important;
+}
+
+.map-embed-container::after {
+    content: "Laddar karta..." !important;
+    position: absolute !important;
+    top: calc(50% + 10px) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    color: var(--map-loading-text-color) !important;
+    font-size: 13px !important;
+    z-index: 0 !important;
+}
+
+@keyframes map-spinner-rotation {
+    from {
+        transform: rotate(0deg) !important;
+    }
+
+    to {
+        transform: rotate(360deg) !important;
+    }
+}
+
+/* ==========================================================================
+   10. PERFORMANCE OPTIMIZATIONS
+   Prestandaoptimeringar för snabbare rendering
+========================================================================== */
+.faq-item:not([open]) {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 60px;
+}
+
+.faq-item summary::after {
+    will-change: transform;
+}
+
+.faq-item[open] summary::after {
+    will-change: auto;
+}
+
+@keyframes lightboxSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================================================================
+   11. MEDIA QUERIES
+   Responsiva brytpunkter för olika skärmstorlekar
+========================================================================== */
+/* Reduced Motion */
+
+/* Print Styles */
+
+/* Container System - Mobile-First Bootstrap 5.3 Pattern */
+.container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+/* Container Queries */
+@container main-container (min-width: 400px) {
+    .price-box {
+        padding: var(--space-lg) !important;
+    }
+}
+
+@container main-container (min-width: 600px) {
+    .vaccination-info {
+        padding: var(--space-xl) !important;
+    }
+}
+
+/* Mobile & Tablet Styles */
+/* Footer Navigation - Mobile-First */
+nav.footer__link-nav ul#footer__links.open,
+nav.footer__link-nav ul#footer__links:target {
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+nav.footer__link-nav ul#footer__links.open>li.col,
+nav.footer__link-nav ul#footer__links:target>li.col {
+    width: 100% !important;
+    margin-bottom: 5px !important;
+}
+
+@supports not selector(:has(*)) {
+
+}
+
+nav#accessibility-navigation ul.accessibility-navigation__items {
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* ==========================================================================
+   Footer PTJ Logo - Begränsar storleken till max 60px (3.75rem)
+========================================================================== */
+/* Målselektor för footer-logotypen med inline-stil */
+footer img[alt="Praktikertjänst"] {
+    max-width: 19.44rem !important;
+    min-width: 3rem !important;
+    height: auto !important;
+    display: inline-block !important;
+}
+
+/* ==========================================================================
+   Page Content Wrapper & Body - Responsiva marginaler och padding
+========================================================================== */
+/* Emulerar margin-bottom: 0, margin-top: 1rem responsivt */
+.page__content-wrapper {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Emulerar padding-right: 100px för desktop */
+
+/* ==========================================================================
+   Price Table Optimeringar - Minimerar whitespace, bibehåller 3 kolumner
+========================================================================== */
+.price-table {
+    /* Kompakt tabellayout */
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-spacing: 0 !important;
+}
+
+.price-table th,
+.price-table td {
+    /* Minimalt padding för kompakt layout */
+    padding: var(--PXR-6) var(--PXR-8) !important;
+    vertical-align: middle !important;
+}
+
+/* Första kolumnen får mer plats för vaccinnamn */
+.price-table th:first-child,
+.price-table td:first-child {
+    width: 26.9% !important;
+    text-align: left !important;
+    padding-left: var(--PXR-12) !important;
+}
+
+/* Priskolumnerna får lika bredd */
+.price-table th:not(:first-child),
+.price-table td:not(:first-child) {
+    width: 18.33% !important;
+    text-align: right !important;
+    padding-right: var(--PXR-12) !important;
+}
+
+/* Visa alltid alla tre priskolumner på mobil */
+
+/* ==========================================================================
+   FAQ Grid Layout - Exakt 2 rader med balanserad bredd
+========================================================================== */
+.faq-item summary {
+    /* Grid layout för exakt 2 rader */
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    grid-template-rows: 1fr 1fr !important;
+    align-items: start !important;
+    gap: 0 var(--space-sm) !important;
+}
+
+/* FAQ frågetext som grid child */
+.faq-item summary::before {
+    content: attr(data-question) !important;
+    grid-column: 1 !important;
+    grid-row: 1 / -1 !important;
+    align-self: center !important;
+    line-height: 1.4 !important;
+    word-break: break-word !important;
+    hyphens: auto !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Chevron i grid */
+.faq-item summary::after {
+    grid-column: 2 !important;
+    grid-row: 1 / -1 !important;
+    align-self: center !important;
+}
+
+/* ==========================================================================
+   Vaccine Information Progressive Disclosure Styles - REDESIGNED
+   Modern card-based design with content previews and consistent styling
+   ========================================================================== */
+
+/* Vaccine Section Container */
+.vaccine-section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#vaccine-heading {
+    font-size: var(--fluid-lg);
+    color: var(--clr-primary);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+    font-weight: var(--fw-bold);
+}
+
+/* Vaccine Categories */
+.vaccine-category {
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.vaccine-category-title {
+    font-size: var(--fluid-md);
+    font-weight: var(--fw-semibold);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--clr-primary);
+    color: var(--clr-primary);
+}
+
+/* Modern Vaccine Cards with Preview */
+.vaccine-item {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-sm);
+    transition: all var(--duration-normal) var(--ease-in-out);
+    box-shadow: 0 2px 8px rgba(1, 35, 99, 0.06);
+    overflow: hidden;
+    position: relative;
+}
+
+.vaccine-item:hover {
+    border-color: var(--clr-primary);
+    box-shadow: 0 4px 16px rgba(1, 35, 99, 0.12);
+    transform: translateY(-2px);
+}
+
+.vaccine-item[open] {
+    border-color: var(--clr-primary);
+    background: linear-gradient(145deg, #ffffff 0%, #eef5ff 100%);
+    box-shadow: 0 6px 24px rgba(1, 35, 99, 0.15);
+}
+
+/* Priority Badge */
+.vaccine-priority {
+    border-left: 4px solid var(--clr-accent);
+    position: relative;
+}
+
+.vaccine-priority::before {
+    content: "Rekommenderat";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--clr-accent);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    font-size: var(--fluid-xs);
+    font-weight: var(--fw-medium);
+    border-bottom-left-radius: var(--radius-md);
+    z-index: 2;
+}
+
+/* Health Service Styling */
+.health-service {
+    border-left: 4px solid #4AA6C9;
+    background: linear-gradient(145deg, #ffffff 0%, #f0f8ff 100%);
+}
+
+/* Modern Summary Design with Preview */
+.vaccine-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-lg);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    background: transparent;
+    border: none;
+    min-height: auto;
+    transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+.vaccine-summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Summary Header */
+.vaccine-summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-sm);
+}
+
+.vaccine-title {
+    font-size: var(--fluid-base);
+    font-weight: var(--fw-bold);
+    color: var(--clr-primary);
+    margin: 0;
+    flex: 1;
+}
+
+/* Content Preview - Always Visible */
+.vaccine-preview {
+    color: var(--clr-body);
+    font-size: var(--fluid-sm);
+    line-height: 1.5;
+    margin: var(--space-xs) 0;
+    opacity: 0.8;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Expand/Collapse Indicator */
+.vaccine-toggle {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--clr-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all var(--duration-normal) var(--ease-in-out);
+    z-index: 1;
+}
+
+.vaccine-toggle::before {
+    content: "+";
+    font-weight: bold;
+}
+
+.vaccine-item[open] .vaccine-toggle::before {
+    content: "−";
+}
+
+.vaccine-item[open] .vaccine-toggle {
+    background: var(--clr-accent);
+    transform: rotate(180deg);
+}
+
+/* Badge Styling */
+.vaccine-badge {
+    background: var(--clr-primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--fluid-xs);
+    font-weight: var(--fw-medium);
+    margin-left: var(--space-sm);
+    white-space: nowrap;
+}
+
+.vaccine-desc {
+    color: var(--clr-body);
+    font-size: var(--fluid-sm);
+    font-style: italic;
+    font-weight: var(--fw-normal);
+    margin-left: var(--space-sm);
+}
+
+/* Full Content - Hidden by Default */
+.vaccine-content {
+    padding: 0 var(--space-lg) var(--space-lg);
+    background: rgba(255, 255, 255, 0.8);
+    border-top: 1px solid rgba(1, 35, 99, 0.1);
+    animation: slideDown 0.3s ease;
+    position: relative;
+}
+
+.vaccine-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: var(--space-lg);
+    right: var(--space-lg);
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--clr-border), transparent);
+}
+
+.vaccine-content p {
+    margin: 0;
+    color: var(--clr-body);
+    line-height: 1.6;
+    font-size: var(--fluid-sm);
+}
+
+.vaccine-content ul {
+    margin: var(--space-sm) 0 0;
+    padding-left: var(--space-md);
+}
+
+.vaccine-content li {
+    margin-bottom: var(--space-xs);
+    line-height: 1.5;
+    color: var(--clr-body);
+}
+
+/* Animation for content reveal */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Optimizations */
+
+/* Focus States for Accessibility */
+.vaccine-summary:focus-visible {
+    outline: 2px solid var(--clr-primary) !important;
+    outline-offset: 2px !important;
+    border-radius: var(--radius-md) !important;
+}
+
+/* High Contrast Mode Support */
+
+/* Reduced Motion Support */
+
+/* ==========================================================================
+   12. MOBILE RESPONSIVENESS ULTRA - COMPLETE OVERHAUL
+   Emergency deployment for 320px-768px devices
+   ========================================================================== */
+
+/* 1. HAMBURGER MENU NAVIGATION */
+
+/* 2. TABLE RESPONSIVENESS */
+
+/* 3. TYPOGRAPHY SCALING */
+
+/* 4. IMAGE RESPONSIVENESS */
+
+/* 5. LAYOUT FIXES */
+
+/* 6. TOUCH TARGETS */
+
+/* 7. IPHONE SE SPECIFIC (320px) */
+
+/* 8. CRITICAL MOBILE FIXES */
+
+/* 9. EMERGENCY HAMBURGER INJECTION */
+
+/* END OF MOBILE RESPONSIVENESS FIXES */
+
+/* ==========================================================================
+   13. Comprehensive Mobile Responsiveness System
+   Complete mobile optimization with hamburger menu, table scrolling, and responsive design
+========================================================================== */
+
+/* Mobile Navigation System */
+.mobile-nav-toggle {
+    display: none !important;
+    position: fixed !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    z-index: 9999 !important;
+    background: var(--clr-primary) !important;
+    color: var(--clr-white) !important;
+    border: none !important;
+    padding: 0.75rem !important;
+    border-radius: var(--radius-sm) !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.mobile-nav-toggle:hover {
+    background: var(--clr-primary-dark) !important;
+    transform: scale(1.05) !important;
+}
+
+/* Hamburger Icon */
+.hamburger-icon {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 24px !important;
+    height: 20px !important;
+    justify-content: space-between !important;
+}
+
+.hamburger-icon span {
+    display: block !important;
+    height: 3px !important;
+    width: 100% !important;
+    background: var(--clr-white) !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Animated Hamburger */
+.mobile-nav-toggle.active .hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px) !important;
+}
+
+.mobile-nav-toggle.active .hamburger-icon span:nth-child(2) {
+    opacity: 0 !important;
+}
+
+.mobile-nav-toggle.active .hamburger-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px) !important;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+    z-index: 9998 !important;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Mobile Menu Panel */
+.mobile-menu {
+    position: fixed !important;
+    top: 0 !important;
+    right: -300px !important;
+    width: 300px !important;
+    height: 100% !important;
+    background: var(--clr-bg) !important;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1) !important;
+    transition: right 0.3s ease !important;
+    z-index: 9999 !important;
+    overflow-y: auto !important;
+    padding: 5rem 1.5rem 2rem !important;
+}
+
+.mobile-menu.active {
+    right: 0 !important;
+}
+
+/* Mobile Menu Items */
+.mobile-menu nav ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.mobile-menu nav li {
+    margin-bottom: 1rem !important;
+}
+
+.mobile-menu nav a {
+    display: block !important;
+    padding: 0.75rem 1rem !important;
+    color: var(--clr-body) !important;
+    text-decoration: none !important;
+    border-radius: var(--radius-sm) !important;
+    transition: all 0.2s ease !important;
+    font-size: var(--fluid-base) !important;
+}
+
+.mobile-menu nav a:hover,
+.mobile-menu nav a:focus {
+    background: var(--clr-bg-subtle) !important;
+    color: var(--clr-primary) !important;
+    transform: translateX(5px) !important;
+}
+
+/* Responsive Tables */
+.table-responsive-wrapper {
+    overflow-x: auto !important;
+    overflow-scrolling: touch !important;
+    margin: 0 -1rem !important;
+    padding: 0 1rem !important;
+}
+
+@keyframes slide-hint {
+
+    0%,
+    100% {
+        transform: translateY(-50%) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-50%) translateX(10px);
+    }
+}
+
+/* Mobile-First Grid System */
+
+/* Responsive Typography */
+
+/* Mobile Forms */
+
+/* Touch-Friendly Interactions */
+
+/* Mobile Cards and Containers */
+
+/* Mobile Images and Media */
+
+/* Mobile Navigation Visibility */
+
+/* Mobile Utility Classes */
+
+/* Landscape Mode Optimizations */
+
+/* Performance Optimizations */
+
+/* Accessibility Enhancements for Mobile */
+
+/* Print Styles for Mobile */
+
+/* ==========================================================================
+   14. Bootstrap 5.3 Responsive Breakpoint System
+   Complete mobile-first responsive implementation
+========================================================================== */
+
+/* Bootstrap 5.3 Breakpoint Variables */
+:root {
+    --bs-breakpoint-xs: 0;
+    --bs-breakpoint-sm: 576px;
+    --bs-breakpoint-md: 768px;
+    --bs-breakpoint-lg: 992px;
+    --bs-breakpoint-xl: 1200px;
+    --bs-breakpoint-xxl: 1400px;
+}
+
+/* Mobile First - XS (Extra Small) - Default styles */
+/* All base styles apply to mobile first */
+
+/* SM (Small) - Landscape phones */
+
+/* MD (Medium) - Tablets */
+
+/* LG (Large) - Desktops */
+
+/* XL (Extra Large) - Large desktops */
+
+/* XXL (Extra Extra Large) - Very large screens */
+
+/* Mobile Navigation Enhancement */
+
+/* Responsive Tables Enhancement */
+
+/* Touch-Optimized Components */
+
+/* Responsive Spacing System */
+
+/* Progressive Enhancement for Modern Devices
+@supports (padding: clamp(1rem, 2vw, 2rem)) {
+    /* Use fluid spacing on supported devices */
+.container {
+    padding-inline: clamp(1rem, 2vw, 2rem) !important;
+}
+
+*/
+/* ==========================================================================
+   15. Progressive Disclosure Enhancement for Mobile
+   Optimized vaccine information display
+========================================================================== */
+
+/* Details/Summary Styling for Mobile */
+details.vaccine-item {
+    border: 1px solid var(--clr-border, #e0e0e0) !important;
+    border-radius: var(--radius-md) !important;
+    margin-bottom: var(--space-sm) !important;
+    background: var(--clr-bg) !important;
+    transition: all 0.3s ease !important;
+}
+
+details.vaccine-item[open] {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+summary.vaccine-summary {
+    padding: var(--space-md) !important;
+    cursor: pointer !important;
+    list-style: none !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: var(--fluid-base) !important;
+    min-height: 44px !important;
+    /* Touch target */
+}
+
+/* Remove default arrow */
+summary.vaccine-summary::-webkit-details-marker {
+    display: none !important;
+}
+
+/* Custom arrow indicator */
+summary.vaccine-summary::after {
+    content: '▼' !important;
+    font-size: 0.8em !important;
+    transition: transform 0.3s ease !important;
+    color: var(--clr-primary) !important;
+}
+
+details[open] summary.vaccine-summary::after {
+    transform: rotate(180deg) !important;
+}
+
+/* Vaccine content styling */
+.vaccine-content {
+    padding: 0 var(--space-md) var(--space-md) !important;
+    animation: slideDown 0.3s ease !important;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile-specific enhancements */
+
+/* Vaccine category styling */
+.vaccine-category {
+    margin-bottom: var(--space-xl) !important;
+}
+
+.vaccine-category-title {
+    font-size: var(--fluid-lg) !important;
+    color: var(--clr-primary) !important;
+    margin-bottom: var(--space-md) !important;
+    padding-bottom: var(--space-sm) !important;
+    border-bottom: 2px solid var(--clr-primary) !important;
+}
+
+/* Mobile FAQ Enhancement */
+
+/* Accordion behavior on mobile */
+
+/* End of CSS Injection - Total lines: 3550+ */
+
+.gdpr-banner {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 10000;
+  width: 100vw;
+  background: #f8f9fa;
+  color: #222;
+  padding: var(--space-md, 1rem);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s, color 0.3s;
+}
+.gdpr-banner p {
+  margin: 0;
+  flex: 1;
+  font-size: 1em;
+}
+.gdpr-banner button {
+  margin-left: 0.5em;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 1.2em;
+  font-weight: 600;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.gdpr-banner #gdpr-accept {
+  background: #012363;
+  color: #fff;
+}
+.gdpr-banner #gdpr-accept:hover {
+  background: #0B496E;
+}
+.gdpr-banner #gdpr-info {
+  background: transparent;
+  color: #012363;
+  border: 1.5px solid #012363;
+}
+.gdpr-banner #gdpr-info:hover {
+  background: #012363;
+  color: #fff;
+}
+
+/* Horizontally center content in main schedule/info blocks, but keep content at the top */
+.block.textblock.col-lg-6.col-md-6.col-sm-12.col-xs-12.displaymode-half.alignment--left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Reduced Motion Preference */
+    @media (prefers-reduced-motion: reduce) {
+
+        html body *,
+        .faq-item,
+        .faq-icon::before,
+        .faq-icon::after,
+        .fade-in {
+            transition: none !important;
+            animation: none !important;
+        }
+
+        .vaccine-item,
+        .vaccine-toggle,
+        .vaccine-content {
+            transition: none !important;
+            animation: none !important;
+        }
+    }
+
+    /* High Contrast Mode */
+    @media (prefers-contrast: high) {
+        .vaccine-item {
+            border-width: 2px !important;
+        }
+
+        .vaccine-toggle {
+            border: 2px solid currentColor !important;
+        }
+    }
+
+    /* Print Styles */
+    @media print {
+        .faq-icon {
+            display: none !important;
+        }
+
+        .location-schedule tr[data-upcoming]::before {
+            display: none !important;
+        }
+
+        .mobile-nav-toggle,
+        .mobile-menu,
+        .mobile-menu-overlay {
+            display: none !important;
+        }
+
+        .container {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+    }
+
+    /* Touch Devices */
+    @media (hover: none) and (pointer: coarse) {
+
+        a,
+        button,
+        input,
+        select,
+        textarea {
+            min-height: 44px !important;
+            min-width: 44px !important;
+        }
+
+        .clickable-card {
+            cursor: pointer !important;
+            tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .clickable-card:active {
+            transform: scale(0.98) !important;
+        }
+
+        /* Increase all interactive element sizes */
+        button,
+        a.btn,
+        input[type="submit"],
+        input[type="button"],
+        .touch-target {
+            min-height: 44px !important;
+            padding: 0.75rem 1rem !important;
+        }
+
+        /* Remove hover effects on touch devices */
+        :hover {
+            transition: none !important;
+        }
+    }

@@ -1,0 +1,248 @@
+/* ==========================================================================
+   FAQ COMPONENT - OPTIMIZED WITH PROPER CLAMP USAGE
+   Fixes background color issues, duplicate titles, and improves responsiveness
+========================================================================== */
+
+/* FAQ Container */
+#vaccine-bjarred-app .faq-section {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    margin-bottom: 0;
+    padding-bottom: 0;
+    max-width: 100%;
+}
+
+/* FAQ Items - Consistent Background */
+#vaccine-bjarred-app .faq-item {
+    background: linear-gradient(145deg, #5a8fc7 0%, #4a7bb0 60%, #406ba0 100%) !important;
+    border: 1px solid transparent;
+    border-radius: clamp(4px, 0.5vw, 8px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* FAQ Items - Open State (Maintain Background) */
+#vaccine-bjarred-app .faq-item[open] {
+    background: linear-gradient(145deg, #5a8fc7 0%, #4a7bb0 60%, #406ba0 100%) !important;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* FAQ Summary - Optimized with Clamp */
+#vaccine-bjarred-app .faq-item summary,
+#vaccine-bjarred-app .vaccine-summary {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(0.75rem, 2vw, 1.25rem);
+    cursor: pointer;
+    color: white;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 500;
+    line-height: 1.4;
+    min-height: 44px; /* Accessibility requirement */
+    border-radius: clamp(4px, 0.5vw, 8px);
+    transition: background-color 0.2s ease;
+    list-style: none;
+    position: relative;
+}
+
+/* Remove default markers */
+#vaccine-bjarred-app .faq-item summary::-webkit-details-marker,
+#vaccine-bjarred-app .vaccine-summary::-webkit-details-marker {
+    display: none;
+}
+
+/* FAQ Title Text - Clean Single Title with Advanced Text Wrapping */
+#vaccine-bjarred-app .faq-title-text {
+    flex: 1;
+    padding-right: clamp(0.5rem, 1vw, 1rem);
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    
+    /* Advanced text wrapping for 1-2 row display */
+    line-height: 1.3;
+    max-height: 2.6em; /* 2 rows max */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    
+    /* Modern hyphenation and word breaking */
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    
+    /* Swedish-specific hyphenation */
+    -webkit-locale: "sv";
+    -moz-locale: "sv";
+    
+    /* Smooth text rendering */
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga" 1, "kern" 1;
+}
+
+/* Custom Chevron Icon */
+#vaccine-bjarred-app .faq-item summary::after,
+#vaccine-bjarred-app .vaccine-summary::after {
+    content: "▼";
+    font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Rotated chevron when open */
+#vaccine-bjarred-app .faq-item[open] summary::after,
+#vaccine-bjarred-app .faq-item[open] .vaccine-summary::after {
+    transform: rotate(180deg);
+}
+
+/* Hover Effects - Maintain Gradient */
+#vaccine-bjarred-app .faq-item summary:hover,
+#vaccine-bjarred-app .vaccine-summary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Focus States */
+#vaccine-bjarred-app .faq-item summary:focus-visible,
+#vaccine-bjarred-app .vaccine-summary:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* FAQ Content - Optimized Spacing */
+#vaccine-bjarred-app .faq-content,
+#vaccine-bjarred-app .vaccine-content {
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.875rem, 1.3vw, 1rem);
+    line-height: 1.6;
+    color: white;
+    background: inherit; /* Inherit the gradient */
+    border-radius: 0 0 clamp(4px, 0.5vw, 8px) clamp(4px, 0.5vw, 8px);
+}
+
+#vaccine-bjarred-app .faq-content p,
+#vaccine-bjarred-app .vaccine-content p {
+    margin: 0;
+    color: white;
+}
+
+#vaccine-bjarred-app .faq-content p:not(:last-child),
+#vaccine-bjarred-app .vaccine-content p:not(:last-child) {
+    margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #vaccine-bjarred-app .faq-item summary,
+    #vaccine-bjarred-app .vaccine-summary {
+        padding: clamp(0.875rem, 3vw, 1.125rem);
+        font-size: clamp(0.875rem, 2vw, 1rem);
+    }
+    
+    #vaccine-bjarred-app .faq-content,
+    #vaccine-bjarred-app .vaccine-content {
+        padding: clamp(0.875rem, 3vw, 1.125rem);
+        font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+    }
+    
+    /* More aggressive text optimization on mobile */
+    #vaccine-bjarred-app .faq-title-text {
+        line-height: 1.25;
+        max-height: 2.5em;
+        word-spacing: -0.05em;
+        letter-spacing: -0.01em;
+    }
+}
+
+/* Ultra-small screens (iPhone SE) */
+@media (max-width: 375px) {
+    #vaccine-bjarred-app .faq-title-text {
+        line-height: 1.2;
+        max-height: 2.4em;
+        font-size: clamp(0.8125rem, 1.8vw, 0.9375rem);
+        word-spacing: -0.1em;
+        letter-spacing: -0.02em;
+    }
+}
+
+/* Animation for Content */
+#vaccine-bjarred-app .faq-item[open] .faq-content,
+#vaccine-bjarred-app .faq-item[open] .vaccine-content {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Performance Optimizations */
+#vaccine-bjarred-app .faq-item:not([open]) {
+    contain: layout style;
+}
+
+#vaccine-bjarred-app .faq-item summary::after {
+    will-change: transform;
+}
+
+#vaccine-bjarred-app .faq-item[open] summary::after {
+    will-change: auto;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    #vaccine-bjarred-app .faq-item {
+        border: 2px solid white;
+    }
+    
+    #vaccine-bjarred-app .faq-item summary:focus-visible {
+        outline: 3px solid yellow;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    #vaccine-bjarred-app .faq-item,
+    #vaccine-bjarred-app .faq-item summary,
+    #vaccine-bjarred-app .faq-item summary::after,
+    #vaccine-bjarred-app .vaccine-summary,
+    #vaccine-bjarred-app .vaccine-summary::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Table Integration - Ensure FAQ clamp doesn't conflict with table clamp */
+#vaccine-bjarred-app .price-table {
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+#vaccine-bjarred-app .price-table th,
+#vaccine-bjarred-app .price-table td {
+    padding: clamp(0.5rem, 1.5vw, 0.75rem);
+    font-size: clamp(0.8125rem, 1.2vw, 0.9375rem);
+}
+
+/* Ensure FAQ and table spacing work together */
+#vaccine-bjarred-app .faq-section + .price-section,
+#vaccine-bjarred-app .price-section + .faq-section {
+    margin-top: clamp(2rem, 4vw, 3rem);
+}

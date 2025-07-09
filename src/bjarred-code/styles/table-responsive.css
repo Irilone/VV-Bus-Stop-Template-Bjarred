@@ -1,0 +1,368 @@
+/* ==========================================================================
+   VACCINE BJARRED - TABLE RESPONSIVE ENHANCEMENTS
+   Advanced responsive table behaviors with container queries
+   Session: COMP-ISO-002
+========================================================================== */
+
+/* CSS Layer for responsive table extensions */
+@layer vb-table-responsive {
+
+/* ==========================================================================
+   1. ENHANCED CONTAINER QUERY SYSTEM
+========================================================================== */
+
+/* Container for intrinsic responsive behavior */
+#vaccine-bjarred-app .table-container {
+    container-type: inline-size;
+    container-name: table-wrapper;
+    width: 100%;
+    position: relative;
+}
+
+/* Micro container (< 300px) - Stack layout */
+@container table-wrapper (max-width: 300px) {
+    #vaccine-bjarred-app .price-table {
+        display: block;
+        width: 100%;
+    }
+    
+    #vaccine-bjarred-app .price-table thead,
+    #vaccine-bjarred-app .price-table tbody,
+    #vaccine-bjarred-app .price-table th,
+    #vaccine-bjarred-app .price-table td,
+    #vaccine-bjarred-app .price-table tr {
+        display: block;
+    }
+    
+    #vaccine-bjarred-app .price-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    #vaccine-bjarred-app .price-table tr {
+        border: 1px solid var(--clr-border);
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+        border-radius: var(--radius-sm);
+        background: var(--clr-bg);
+    }
+    
+    #vaccine-bjarred-app .price-table td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+    
+    #vaccine-bjarred-app .price-table td:before {
+        content: attr(data-label) ": ";
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: var(--fw-medium);
+        color: var(--clr-heading);
+    }
+}
+
+/* Small container (300px - 480px) - Compressed layout */
+@container table-wrapper (min-width: 300px) and (max-width: 480px) {
+    #vaccine-bjarred-app .price-table,
+    #vaccine-bjarred-app .location-schedule {
+        font-size: 0.75rem;
+        min-width: 280px;
+    }
+    
+    #vaccine-bjarred-app .price-table th,
+    #vaccine-bjarred-app .price-table td {
+        padding: var(--PXR-4) var(--PXR-6);
+    }
+    
+    #vaccine-bjarred-app .price-table th:first-child,
+    #vaccine-bjarred-app .price-table td:first-child {
+        width: 40%;
+    }
+    
+    #vaccine-bjarred-app .price-table th:not(:first-child),
+    #vaccine-bjarred-app .price-table td:not(:first-child) {
+        width: 20%;
+        font-size: 0.7rem;
+    }
+}
+
+/* Medium container (480px - 640px) - Balanced layout */
+@container table-wrapper (min-width: 480px) and (max-width: 640px) {
+    #vaccine-bjarred-app .price-table {
+        width: clamp(20rem, 90%, 24rem);
+    }
+    
+    #vaccine-bjarred-app .location-schedule {
+        width: clamp(18rem, 85%, 22rem);
+    }
+    
+    #vaccine-bjarred-app .price-table th:first-child,
+    #vaccine-bjarred-app .price-table td:first-child {
+        width: 35%;
+    }
+    
+    #vaccine-bjarred-app .price-table th:not(:first-child),
+    #vaccine-bjarred-app .price-table td:not(:first-child) {
+        width: 21.67%;
+    }
+}
+
+/* Large container (640px - 900px) - Comfortable layout */
+@container table-wrapper (min-width: 640px) and (max-width: 900px) {
+    #vaccine-bjarred-app .price-table {
+        width: clamp(22rem, 85%, 28rem);
+    }
+    
+    #vaccine-bjarred-app .location-schedule {
+        width: clamp(20rem, 80%, 26rem);
+    }
+    
+    #vaccine-bjarred-app .table-scroll-container {
+        overflow-x: visible;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* Extra large container (> 900px) - Full layout */
+@container table-wrapper (min-width: 900px) {
+    #vaccine-bjarred-app .price-table,
+    #vaccine-bjarred-app .location-schedule {
+        width: auto;
+        min-width: 28rem;
+        max-width: 32rem;
+    }
+    
+    #vaccine-bjarred-app .table-scroll-container {
+        overflow-x: visible;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* ==========================================================================
+   2. ADAPTIVE TYPOGRAPHY SYSTEM
+========================================================================== */
+
+/* Typography scaling based on container size */
+@container table-wrapper (max-width: 400px) {
+    #vaccine-bjarred-app .price-table th,
+    #vaccine-bjarred-app .location-schedule th {
+        font-size: clamp(0.6rem, 2vw + 0.5rem, 0.75rem);
+        line-height: 1.1;
+    }
+    
+    #vaccine-bjarred-app .price-table td,
+    #vaccine-bjarred-app .location-schedule td {
+        font-size: clamp(0.65rem, 1.8vw + 0.55rem, 0.8rem);
+        line-height: 1.2;
+    }
+}
+
+@container table-wrapper (min-width: 400px) and (max-width: 600px) {
+    #vaccine-bjarred-app .price-table th,
+    #vaccine-bjarred-app .location-schedule th {
+        font-size: clamp(0.75rem, 1.5vw + 0.6rem, 0.875rem);
+    }
+    
+    #vaccine-bjarred-app .price-table td,
+    #vaccine-bjarred-app .location-schedule td {
+        font-size: clamp(0.7rem, 1.2vw + 0.65rem, 0.825rem);
+    }
+}
+
+@container table-wrapper (min-width: 600px) {
+    #vaccine-bjarred-app .price-table th,
+    #vaccine-bjarred-app .location-schedule th {
+        font-size: clamp(0.875rem, 0.5vw + 0.8rem, 0.9444rem);
+    }
+    
+    #vaccine-bjarred-app .price-table td,
+    #vaccine-bjarred-app .location-schedule td {
+        font-size: clamp(0.8125rem, 0.3vw + 0.78rem, 0.8333rem);
+    }
+}
+
+/* ==========================================================================
+   3. RESPONSIVE INTERACTION STATES
+========================================================================== */
+
+/* Enhanced touch targets for mobile */
+@container table-wrapper (max-width: 600px) {
+    #vaccine-bjarred-app .price-table th,
+    #vaccine-bjarred-app .price-table td,
+    #vaccine-bjarred-app .location-schedule th,
+    #vaccine-bjarred-app .location-schedule td {
+        min-height: 44px;
+        padding-top: max(var(--PXR-8), 11px);
+        padding-bottom: max(var(--PXR-8), 11px);
+    }
+}
+
+/* Hover states for larger screens */
+@container table-wrapper (min-width: 768px) {
+    #vaccine-bjarred-app .price-table tbody tr:hover {
+        background: var(--clr-bg-card);
+        transform: translateX(2px);
+        transition: all 0.2s ease;
+    }
+    
+    #vaccine-bjarred-app .location-schedule tbody tr:hover {
+        background: var(--clr-bg-card);
+        transition: background-color 0.2s ease;
+    }
+}
+
+/* ==========================================================================
+   4. SCROLL BEHAVIOR ENHANCEMENTS
+========================================================================== */
+
+/* Smooth scroll behavior */
+#vaccine-bjarred-app .table-scroll-container {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--clr-accent) var(--clr-bg-alt);
+}
+
+/* Webkit scrollbar styling */
+#vaccine-bjarred-app .table-scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+#vaccine-bjarred-app .table-scroll-container::-webkit-scrollbar-track {
+    background: var(--clr-bg-alt);
+    border-radius: 3px;
+}
+
+#vaccine-bjarred-app .table-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--clr-accent);
+    border-radius: 3px;
+}
+
+#vaccine-bjarred-app .table-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: var(--clr-primary);
+}
+
+/* Scroll indicators */
+@container table-wrapper (max-width: 600px) {
+    #vaccine-bjarred-app .table-scroll-container::after {
+        content: "→ Scroll för mer";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: linear-gradient(90deg, transparent, var(--clr-bg) 30%);
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+        color: var(--clr-accent);
+        pointer-events: none;
+        opacity: 0.8;
+    }
+    
+    #vaccine-bjarred-app .table-scroll-container:hover::after,
+    #vaccine-bjarred-app .table-scroll-container:focus-within::after {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+}
+
+/* ==========================================================================
+   5. ADAPTIVE SPACING SYSTEM
+========================================================================== */
+
+/* Spacing adjustments based on container size */
+@container table-wrapper (max-width: 400px) {
+    #vaccine-bjarred-app .price-table,
+    #vaccine-bjarred-app .location-schedule {
+        margin-block-start: var(--CLAMP-8);
+        border-radius: var(--radius-sm);
+    }
+}
+
+@container table-wrapper (min-width: 400px) and (max-width: 700px) {
+    #vaccine-bjarred-app .price-table,
+    #vaccine-bjarred-app .location-schedule {
+        margin-block-start: var(--CLAMP-12);
+    }
+}
+
+@container table-wrapper (min-width: 700px) {
+    #vaccine-bjarred-app .price-table,
+    #vaccine-bjarred-app .location-schedule {
+        margin-block-start: var(--CLAMP-16);
+    }
+}
+
+/* ==========================================================================
+   6. PERFORMANCE OPTIMIZATIONS
+========================================================================== */
+
+/* GPU acceleration for smooth animations */
+#vaccine-bjarred-app .price-table,
+#vaccine-bjarred-app .location-schedule {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Contain layout and style changes */
+#vaccine-bjarred-app .table-scroll-container {
+    contain: layout style;
+}
+
+/* Optimize repainting */
+#vaccine-bjarred-app .price-table tbody tr,
+#vaccine-bjarred-app .location-schedule tbody tr {
+    contain: style;
+}
+
+/* ==========================================================================
+   7. FALLBACK RESPONSIVE SYSTEM
+========================================================================== */
+
+/* Media query fallbacks for container query support */
+@supports not (container-type: inline-size) {
+    
+    /* Mobile first approach */
+    @media (max-width: 320px) {
+        #vaccine-bjarred-app .price-table,
+        #vaccine-bjarred-app .location-schedule {
+            font-size: 0.6rem;
+            min-width: 280px;
+        }
+    }
+    
+    @media (min-width: 321px) and (max-width: 480px) {
+        #vaccine-bjarred-app .price-table,
+        #vaccine-bjarred-app .location-schedule {
+            font-size: 0.75rem;
+            min-width: 300px;
+        }
+    }
+    
+    @media (min-width: 481px) and (max-width: 768px) {
+        #vaccine-bjarred-app .price-table {
+            width: clamp(20rem, 90%, 24rem);
+        }
+        
+        #vaccine-bjarred-app .location-schedule {
+            width: clamp(18rem, 85%, 22rem);
+        }
+    }
+    
+    @media (min-width: 769px) {
+        #vaccine-bjarred-app .table-scroll-container {
+            overflow-x: visible;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+} /* End @layer vb-table-responsive */

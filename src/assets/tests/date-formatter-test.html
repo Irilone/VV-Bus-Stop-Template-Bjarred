@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swedish Date Formatter Test - Perfect Responsive Formats</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        
+        #vaccine-bjarred-app {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-container {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .width-indicator {
+            background: #e9ecef;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .table-scroll-container {
+            overflow-x: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            background: white;
+            resize: horizontal;
+            min-width: 250px;
+            max-width: 100%;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+        
+        th, td {
+            padding: 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .resize-handle {
+            width: 10px;
+            height: 100%;
+            background: #007bff;
+            cursor: ew-resize;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        
+        .format-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .format-example {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .format-example h4 {
+            margin: 0 0 0.5rem 0;
+            color: #1976d2;
+        }
+        
+        .format-example code {
+            background: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+        }
+        
+        .controls {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .controls button {
+            padding: 0.5rem 1rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .controls button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="vaccine-bjarred-app">
+        <h1>Perfect Swedish Date Formatter Test</h1>
+        
+        <div class="format-examples">
+            <div class="format-example">
+                <h4>Full Width (680px+)</h4>
+                <code>23 jan 2025</code><br>
+                <code>31 okt 2025</code><br>
+                <code>20 april 2025</code>
+                <p><strong>Weekday:</strong> Full names (Måndag, Tisdag, etc.)</p>
+            </div>
+            
+            <div class="format-example">
+                <h4>Large (520-680px)</h4>
+                <code>21/03-2025</code><br>
+                <code>09/12-2024</code>
+                <p><strong>Weekday:</strong> Full names (Måndag, Tisdag, etc.)</p>
+            </div>
+            
+            <div class="format-example">
+                <h4>Small (420-520px)</h4>
+                <code>25/02-25</code><br>
+                <code>09/12-24</code>
+                <p><strong>Weekday:</strong> 3 letters (Mån, Tis, Ons, etc.)</p>
+            </div>
+            
+            <div class="format-example">
+                <h4>Tiny (350-420px)</h4>
+                <code>23/12</code><br>
+                <code>09/05</code>
+                <p><strong>Weekday:</strong> Unique letters (M, Ti, O, To, F, L, S)</p>
+            </div>
+            
+            <div class="format-example">
+                <h4>Micro (280-350px)</h4>
+                <code>9/5</code><br>
+                <code>23/12</code>
+                <p><strong>Weekday:</strong> Column removed entirely</p>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button onclick="setWidth(700)">Full Width (700px)</button>
+            <button onclick="setWidth(600)">Large (600px)</button>
+            <button onclick="setWidth(480)">Medium (480px)</button>
+            <button onclick="setWidth(380)">Small (380px)</button>
+            <button onclick="setWidth(320)">Tiny (320px)</button>
+            <button onclick="setWidth(280)">Micro (280px)</button>
+            <button onclick="resetWidth()">Reset to Auto</button>
+        </div>
+        
+        <div class="test-container">
+            <div class="width-indicator" id="width-indicator">
+                Container Width: Auto (resize the table below to test)
+            </div>
+            
+            <div class="table-scroll-container" id="test-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Datum</th>
+                            <th>Veckodag</th>
+                            <th>Tid</th>
+                            <th>Plats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><time datetime="2025-01-09">9 januari 2025</time></td>
+                            <td>Måndag</td>
+                            <td>09:30-16:30</td>
+                            <td>Bjärred Centrum</td>
+                        </tr>
+                        <tr>
+                            <td><time datetime="2025-02-15">15 februari 2025</time></td>
+                            <td>Tisdag</td>
+                            <td>10:00-15:30</td>
+                            <td>Bjärred Station</td>
+                        </tr>
+                        <tr>
+                            <td><time datetime="2025-03-20">20 mars 2025</time></td>
+                            <td>Onsdag</td>
+                            <td>08:30-17:00</td>
+                            <td>Bjärred Park</td>
+                        </tr>
+                        <tr>
+                            <td><time datetime="2025-04-10">10 april 2025</time></td>
+                            <td>Torsdag</td>
+                            <td>09:00-16:00</td>
+                            <td>Bjärred Skola</td>
+                        </tr>
+                        <tr>
+                            <td><time datetime="2025-05-09">9 maj 2025</time></td>
+                            <td>Fredag</td>
+                            <td>10:30-15:00</td>
+                            <td>Bjärred Bibliotek</td>
+                        </tr>
+                        <tr>
+                            <td><time datetime="2025-06-14">14 juni 2025</time></td>
+                            <td>Lördag</td>
+                            <td>09:30-14:30</td>
+                            <td>Bjärred Torg</td>
+                        </tr>
+                        <tr>
+                            <td><time datetime="2025-10-31">31 oktober 2025</time></td>
+                            <td>Söndag</td>
+                            <td>11:00-16:30</td>
+                            <td>Bjärred Centrum</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="test-container">
+            <h3>Format Breakdown by Width:</h3>
+            <ul>
+                <li><strong>680px+ (Full):</strong> "dd mmmm yyyy" format (23 jan 2025) + Full weekdays</li>
+                <li><strong>520-680px (Large):</strong> "dd/MM-yyyy" format (21/03-2025) + Full weekdays</li>
+                <li><strong>420-520px (Medium):</strong> "dd-MM-yy" format (25/02-25) + 3-letter weekdays</li>
+                <li><strong>350-420px (Small):</strong> "dd/MM" format (23/12) + Single letter weekdays</li>
+                <li><strong>280-350px (Tiny):</strong> "d/M" format (9/5) + Weekday column removed</li>
+            </ul>
+        </div>
+        
+        <div class="test-container">
+            <h3>Current Date Highlighting:</h3>
+            <p><strong>Filson Pro Compatible Font Weight:</strong> Current date and weekday get increased font weight in 100-unit increments</p>
+            <ul>
+                <li><strong>Regular cells:</strong> +100 font weight (next available Filson Pro weight)</li>
+                <li><strong>Date cells:</strong> +200 font weight (extra bold)</li>
+                <li><strong>Weekday cells:</strong> +200 font weight (extra bold)</li>
+                <li><strong>Design System Integration:</strong> Uses CSS variables from styletest.css</li>
+                <li><strong>Available weights:</strong> 300, 400, 500, 600, 700, 800, 900</li>
+            </ul>
+            <p id="current-date-info">Today's date will be automatically highlighted in the table above.</p>
+            
+            <h4>Design System Font Weight Variables:</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 1rem;">
+                <code style="padding: 0.25rem; background: #f8f9fa; border-radius: 3px;">--fw-normal: 400</code>
+                <code style="padding: 0.25rem; background: #f8f9fa; border-radius: 3px;">--fw-regular: 500</code>
+                <code style="padding: 0.25rem; background: #f8f9fa; border-radius: 3px;">--fw-medium: 600</code>
+                <code style="padding: 0.25rem; background: #f8f9fa; border-radius: 3px;">--fw-bold: 700</code>
+                <code style="padding: 0.25rem; background: #f8f9fa; border-radius: 3px;">--fw-heavy: 800</code>
+                <code style="padding: 0.25rem; background: #f8f9fa; border-radius: 3px;">--fw-black: 900</code>
+            </div>
+        </div>
+    </div>
+    
+    <script src="date-formatter.js"></script>
+    <script>
+        // Add today's date to the table for demonstration
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const todayISO = today.toISOString().split('T')[0];
+            
+            // Swedish month names
+            const monthNames = [
+                'januari', 'februari', 'mars', 'april', 'maj', 'juni',
+                'juli', 'augusti', 'september', 'oktober', 'november', 'december'
+            ];
+            
+            // Swedish day names
+            const dayNames = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag'];
+            
+            // Format today's date in Swedish
+            const day = today.getDate();
+            const month = monthNames[today.getMonth()];
+            const year = today.getFullYear();
+            const weekday = dayNames[today.getDay() === 0 ? 6 : today.getDay() - 1]; // Adjust for Monday start
+            
+            const swedishDate = `${day} ${month} ${year}`;
+            
+            // Create a new row for today
+            const tbody = document.querySelector('tbody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><time datetime="${todayISO}">${swedishDate}</time></td>
+                <td>${weekday}</td>
+                <td>09:00-17:00</td>
+                <td>Bjärred Centrum (IDAG!)</td>
+            `;
+            
+            // Insert as first row to make it prominent
+            tbody.insertBefore(newRow, tbody.firstChild);
+            
+            // Update the info text
+            const infoElement = document.getElementById('current-date-info');
+            infoElement.innerHTML = `Today's date (<strong>${swedishDate}</strong>) has been added to the table and will be highlighted with increased font weight.`;
+        });
+        function setWidth(width) {
+            const container = document.getElementById('test-table');
+            container.style.width = width + 'px';
+            updateWidthIndicator(width);
+        }
+        
+        function resetWidth() {
+            const container = document.getElementById('test-table');
+            container.style.width = '';
+            updateWidthIndicator('Auto');
+        }
+        
+        function updateWidthIndicator(width) {
+            const indicator = document.getElementById('width-indicator');
+            if (typeof width === 'number') {
+                indicator.textContent = `Container Width: ${width}px`;
+                
+                // Add format type indicator
+                let formatType = 'full';
+                if (width < 280) formatType = 'micro (d/M, no weekday)';
+                else if (width < 350) formatType = 'tiny (dd/MM, letters)';
+                else if (width < 420) formatType = 'small (dd-MM-yy, 3-letter)';
+                else if (width < 520) formatType = 'medium (dd/MM-yyyy, full)';
+                else if (width < 680) formatType = 'large (dd mmmm yyyy, full)';
+                else formatType = 'full (dd mmmm yyyy, full)';
+                
+                indicator.innerHTML = `Container Width: ${width}px<br><small>Format: ${formatType}</small>`;
+            } else {
+                indicator.textContent = `Container Width: ${width}`;
+            }
+        }
+        
+        // Add resize observer to track manual resizing
+        if (window.ResizeObserver) {
+            const resizeObserver = new ResizeObserver(entries => {
+                entries.forEach(entry => {
+                    const width = Math.round(entry.contentRect.width);
+                    updateWidthIndicator(width);
+                });
+            });
+            
+            resizeObserver.observe(document.getElementById('test-table'));
+        }
+        
+        // Initialize with current width
+        setTimeout(() => {
+            const container = document.getElementById('test-table');
+            updateWidthIndicator(container.offsetWidth);
+        }, 100);
+    </script>
+</body>
+</html>

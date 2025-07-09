@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Test - Optimized with Clamp</title>
+    <style>
+        /* Basic reset and container */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 2rem;
+        }
+        
+        #vaccine-bjarred-app {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #012363;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .demo-section h2 {
+            color: #012363;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .controls button {
+            padding: 0.5rem 1rem;
+            background: #012363;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        
+        .controls button:hover {
+            background: #1a3a7b;
+        }
+        
+        .status {
+            background: #e8f5e8;
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+    </style>
+    <link rel="stylesheet" href="faq-optimized.css">
+</head>
+<body>
+    <div id="vaccine-bjarred-app">
+        <h1>FAQ Test - Optimized with Clamp</h1>
+        
+        <div class="demo-section">
+            <h2>Features Demonstrated:</h2>
+            <ul>
+                <li>✅ Fixed duplicate titles issue</li>
+                <li>✅ Maintained gradient background when opened</li>
+                <li>✅ Proper clamp() usage for responsive design</li>
+                <li>✅ Robust JavaScript similar to price-toggle.js</li>
+                <li>✅ Accessibility with keyboard navigation</li>
+                <li>✅ Clean, consistent styling</li>
+            </ul>
+        </div>
+        
+        <div class="controls">
+            <button onclick="window.faqToggle && window.faqToggle.openAll()">Open All FAQs</button>
+            <button onclick="window.faqToggle && window.faqToggle.closeAll()">Close All FAQs</button>
+            <button onclick="toggleSingleMode()">Toggle Single Mode</button>
+            <button onclick="showStatus()">Show Status</button>
+        </div>
+        
+        <div class="status" id="status">
+            FAQ Toggle initialized. Try opening/closing FAQs to see maintained gradient background.
+        </div>
+        
+        <article id="FAQ" class="faq-section">
+            <h2 id="faq-heading">Frågor och Svar</h2>
+            <div class="vaccination-info">
+                <details class="faq-item">
+                    <summary class="vaccine-summary" tabindex="0" role="button" aria-expanded="false">
+                        Behöver jag boka tid?
+                    </summary>
+                    <div class="faq-content">
+                        <p>Hos oss är det drop-in, vilket innebär att du kan komma när det passar dig bäst. Tack vare våra bra rutiner i Bjärred är väntetider korta. Ingen förbokning krävs.</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="vaccine-summary" tabindex="0" role="button" aria-expanded="false">
+                        Vilket vaccin passar mig?
+                    </summary>
+                    <div class="vaccine-content">
+                        <p>Våra erfarna sjuksköterskor ger dig personlig rådgivning direkt på plats. Ingen konsultation eller recept från läkare behövs för att avgöra vaccinbehov.</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="vaccine-summary" tabindex="0" role="button" aria-expanded="false">
+                        Vilka betalningar tar ni?
+                    </summary>
+                    <div class="vaccine-content">
+                        <p>Vi tar emot kort (Visa, Mastercard) och Swish. Kontant betalning är nej inte ok.</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="vaccine-summary" tabindex="0" role="button" aria-expanded="false">
+                        Kan barn vaccineras?
+                    </summary>
+                    <div class="vaccine-content">
+                        <p>Ja, på Vaccin- och Hälsobussen är barnvaccin givet. Barn måste komma med förälder eller ha skriftligt ok.</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="vaccine-summary" tabindex="0" role="button" aria-expanded="false">
+                        Behöver jag ta med vaccinbevis?
+                    </summary>
+                    <div class="vaccine-content">
+                        <p>Har du ett vaccinbevis får du gärna ta med det. Saknar du dokument kan vår personal ofta hitta tidigare vaccin i vårt journal eller ge råd om ett bra schema.</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="vaccine-summary" tabindex="0" role="button" aria-expanded="false">
+                        Erbjuder ni rådgivning?
+                    </summary>
+                    <div class="vaccine-content">
+                        <p>Ja! Vi erbjuder rådgivning om vilka vacciner som passar dig, baserat på din hälsa och dina resplaner. Fråga oss på plats.</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="vaccine-summary" tabindex="0" role="button" aria-expanded="false">
+                        Kan ni ge vaccinbevis?
+                    </summary>
+                    <div class="vaccine-content">
+                        <p>Ja, vi ger intern. vaccinbevis och kan uppdatera ditt vaccinregister.</p>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="vaccine-summary" tabindex="0" role="button" aria-expanded="false">
+                        Vad gör jag vid akut behov?
+                    </summary>
+                    <div class="vaccine-content">
+                        <p>Kontakta oss för snabb vaccination vid skador, utsättning eller akut resebehov.</p>
+                    </div>
+                </details>
+            </div>
+        </article>
+    </div>
+    
+    <script src="faq-toggle.js"></script>
+    <script>
+        // Additional test functionality
+        function toggleSingleMode() {
+            if (window.faqToggle) {
+                window.faqToggle.options.singleOpen = !window.faqToggle.options.singleOpen;
+                updateStatus(`Single mode: ${window.faqToggle.options.singleOpen ? 'ON' : 'OFF'}`);
+            }
+        }
+        
+        function showStatus() {
+            if (window.faqToggle) {
+                const openFAQs = window.faqToggle.getCurrentlyOpen();
+                const totalFAQs = window.faqToggle.faqs.size;
+                updateStatus(`${openFAQs.length} of ${totalFAQs} FAQs are open. IDs: ${openFAQs.join(', ')}`);
+            }
+        }
+        
+        function updateStatus(message) {
+            const statusEl = document.getElementById('status');
+            if (statusEl) {
+                statusEl.textContent = message;
+                statusEl.style.background = '#e8f5e8';
+                setTimeout(() => {
+                    statusEl.style.background = '#f0f8ff';
+                }, 2000);
+            }
+        }
+        
+        // Listen for FAQ events
+        document.addEventListener('vaccine:faq:ready', () => {
+            updateStatus('FAQ Toggle component initialized successfully!');
+        });
+        
+        document.addEventListener('vaccine:faq:toggled', (event) => {
+            const { faqId, isOpen } = event.detail;
+            updateStatus(`FAQ ${faqId} ${isOpen ? 'opened' : 'closed'}`);
+        });
+        
+        // Test keyboard navigation
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'F1') {
+                event.preventDefault();
+                updateStatus('Use Tab to navigate, Enter/Space to toggle, Arrow keys to move between FAQs');
+            }
+        });
+    </script>
+</body>
+</html>
