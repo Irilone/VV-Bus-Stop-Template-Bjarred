@@ -5,15 +5,15 @@
   const EPISERVER_DOMAIN = 'https://www.ptj.se';
   const SITE_PATH = '/globalassets/vaccincenter-varvet/';
 
-  // EpiServer version hashes for different resource types
+    // EpiServer version hashes for different resource types
   const VERSION_HASHES = {
-    css: '49f8f5',           // CSS files version hash
-    coreJs: '49f946',        // Core JS modules version hash
-    componentJs: '49f936',   // Component JS modules version hash
-    interfaceJs: '49f961',   // Interface contracts version hash
-    configJson: '49f952',    // Design tokens/config version hash
-    externalJs: '49f941',    // External scripts version hash
-    bootstrapJs: '49f80a'    // Bootstrap/local scripts version hash
+    css: '49fbae',           // CSS files version hash (updated)
+    coreJs: '49fbae',        // Core JS modules version hash (updated)
+    componentJs: '49fbae',   // Component JS modules version hash (updated)
+    interfaceJs: '49fbae',   // Interface contracts version hash (updated)
+    configJson: '49fbae',    // Design tokens/config version hash (updated)
+    externalJs: '49fbae',    // External scripts version hash (updated)
+    bootstrapJs: '49fbae'    // Bootstrap/local scripts version hash (updated)
   };
 
   // Build URLs with EpiServer version hashes
